@@ -1,24 +1,24 @@
 **/*~
-# We wanna ignore any config/ssl/etc.. type file. As the setup container will create these for us.
+# We wanna ignore any resources/ssl/etc.. type file. As the setup container will create these for us.
 
-config/elasticsearch/elasticsearch.crt
-config/elasticsearch/elasticsearch.key
-config/elasticsearch/elasticsearch.keystore
-config/kibana/kibana.crt
-config/kibana/kibana.key
-config/kibana/kibana.keystore
-config/logstash/logstash.crt
-config/logstash/logstash.key
-config/logstash/logstash.keystore
-config/ssl/ca/ca.crt
-config/ssl/ca/ca.key
-config/ssl/docker-cluster-ca.zip
-config/ssl/docker-cluster.zip
+resources/elasticsearch/elasticsearch.crt
+resources/elasticsearch/elasticsearch.key
+resources/elasticsearch/elasticsearch.keystore
+resources/kibana/kibana.crt
+resources/kibana/kibana.key
+resources/kibana/kibana.keystore
+resources/logstash/logstash.crt
+resources/logstash/logstash.key
+resources/logstash/logstash.keystore
+resources/ssl/ca/ca.crt
+resources/ssl/ca/ca.key
+resources/ssl/docker-cluster-ca.zip
+resources/ssl/docker-cluster.zip
 
-config/apm-server/beats.keystore
-config/auditbeat/beats.keystore
-config/filebeat/beats.keystore
-config/heartbeat/beats.keystore
-config/journalbeat/beats.keystore
-config/metricbeat/beats.keystore
-config/packetbeat/beats.keystore
+resources/apm-server/beats.keystore
+resources/auditbeat/beats.keystore
+resources/filebeat/beats.keystore
+resources/heartbeat/beats.keystore
+resources/journalbeat/beats.keystore
+resources/metricbeat/beats.keystore
+resources/packetbeat/beats.keystore

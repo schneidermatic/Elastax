@@ -1,6 +1,6 @@
 #/bin/ash
 
-confdir="${PWD}/config"
+confdir="${PWD}/resources"
 
 chown -R 1000:1000 "$confdir"
 find "$confdir" -type f -name "*.keystore" -exec chmod go-wrx {} \;

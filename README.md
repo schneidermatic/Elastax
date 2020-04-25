@@ -1,2 +1,2 @@
-# miniobs-recipes
-Collection of miniobs recipes based on docker-compose
+# miniobs
+Collection of various elastic stack observability recipes

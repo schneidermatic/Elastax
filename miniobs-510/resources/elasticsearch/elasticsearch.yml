@@ -1,0 +1,22 @@
+
+cluster.name: "docker-cluster"
+network.host: 0.0.0.0
+transport.host: 0.0.0.0
+
+# minimum_master_nodes need to be explicitly set when bound on a public IP
+# set to 1 to allow single node clusters
+# Details: https://github.com/elastic/elasticsearch/pull/17288
+cluster.initial_master_nodes: ["es-cluster01"]
+discovery.zen.minimum_master_nodes: 1
+xpack.license.self_generated.type: trial
+xpack.security.enabled: true
+xpack.security.http.ssl.enabled: true
+xpack.security.http.ssl.verification_mode: certificate
+xpack.security.http.ssl.key: certificates/certs/docker-cluster/elasticsearch/elasticsearch.key
+xpack.security.http.ssl.certificate: certificates/certs/docker-cluster/elasticsearch/elasticsearch.crt
+xpack.security.http.ssl.certificate_authorities: [ "certificates/certs/ca/ca.crt" ]
+
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.key:  certificates/certs/docker-cluster/elasticsearch/elasticsearch.key
+xpack.security.transport.ssl.certificate: certificates/certs/docker-cluster/elasticsearch/elasticsearch.crt
+xpack.security.transport.ssl.certificate_authorities: [ "certificates/certs/ca/ca.crt" ]

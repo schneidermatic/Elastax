@@ -1,0 +1,52 @@
+metricbeat.modules:
+
+- module: system
+  metricsets:
+    - cpu
+    - load
+    - core
+    - diskio
+    - filesystem
+    - fsstat
+    - memory
+    - network
+    - process
+    - socket
+  enabled: true
+  period: 10s
+  processes: ['.*']
+  cgroups: true
+
+- module: docker
+  metricsets: ["cpu", "info", "memory", "network", "diskio", "container"]
+  hosts: ["unix:///var/run/docker.sock"]
+  enabled: true
+  period: 10s
+
+processors:
+- add_cloud_metadata: ~
+- add_docker_metadata: ~
+
+processors:
+- add_cloud_metadata:
+
+#output.logstash:
+#  hosts: ["ls01:5044"]
+
+output.elasticsearch:
+  hosts: ['es01:9200']
+  protocol: "http"
+  username: "${ELASTIC_USER}"
+  password: "${ELASTIC_PASSWORD}"
+
+setup.kibana:
+  host: 'kb01:5601'
+  username: "${ELASTIC_USER}"
+  password: "${ELASTIC_PASSWORD}"
+  protocol: "http"
+
+setup.dashboards.enabled: true
+setup.dashboards.retry.enabled: true
+setup.dashboards.retry.interval: 5s
+
+xpack.monitoring.enabled: true

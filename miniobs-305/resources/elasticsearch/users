@@ -1,0 +1,8 @@
+admin:changeme
+apm_server_user:changeme
+apm_user_ro:changeme
+beats_user:changeme
+filebeat_user:changeme
+heartbeat_user:changeme
+kibana_system_user:changeme
+metricbeat_user:changeme

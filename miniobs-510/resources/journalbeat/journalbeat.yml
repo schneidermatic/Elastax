@@ -1,0 +1,30 @@
+journalbeat.inputs:
+- paths: []
+  seek: cursor
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+
+keystore.path: "/usr/share/journalbeat/data/beats.keystore"
+
+output.elasticsearch:
+  hosts: ['elasticsearch:9200']
+  protocol: "https"
+  username: elastic
+  # Read PW from beats.keystore
+  password: "${ELASTIC_PASSWORD}"
+  ssl.certificate_authorities: ["/usr/share/journalbeat/certs/ca/ca.crt"]
+
+setup.kibana:
+  host: "http://kibana:5601"
+  username: elastic
+  password: "${ELASTIC_PASSWORD}"
+  protocol: "http"
+  ssl.enabled: false
+  ssl.certificate_authorities: ["/usr/share/journalbeat/certs/ca/ca.crt"]
+
+xpack.monitoring.enabled: true

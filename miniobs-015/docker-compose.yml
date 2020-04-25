@@ -1,0 +1,160 @@
+---
+version: '3.7'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    container_name: es01
+    ports: 
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es01
+      - http.port=9200
+      - transport.port=9300
+      - cluster.initial_master_nodes=es01,es02,es03
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node="hot"
+      - node.attr.rack=eu-central-1a
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+    volumes:
+      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data01:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl -s http://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    container_name: es02
+    ports: 
+      - '9201:9201'
+      - '9301:9301'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es02
+      - http.port=9201
+      - transport.port=9301
+      - cluster.initial_master_nodes=es01,es02,es03
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node="hot"
+      - node.attr.rack=eu-central-1b
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+    volumes:
+      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data02:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl -s http://localhost:9201 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    container_name: es03
+    ports: 
+      - '9202:9202'
+      - '9302:9302'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es03
+      - http.port=9202
+      - transport.port=9302
+      - cluster.initial_master_nodes=es01,es02,es03
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node="hot"
+      - node.attr.rack=eu-central-1c
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+    volumes:
+      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data03:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl -s http://localhost:9202 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kb01:
+    image: docker.elastic.co/kibana/kibana:${TAG}
+    container_name: kb01
+    environment:
+      - SERVER_NAME=kb01
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=5601
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+      - ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_APM_SERVICEMAPENABLED=TRUE
+    ports: 
+      - '5601:5601'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:5601 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  data01:
+  data02:
+  data03:

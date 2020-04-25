@@ -1,0 +1,331 @@
+---
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}
+    labels:
+      - "co.elastic.apm.stack-version=${ELASTIC_RELEASE}"
+    container_name: es01
+    ports: 
+      - '9200:9200'
+      - '9300:9300'
+    networks: 
+      - 'elastic'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es01
+      - http.port=9200
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node="hot"
+      - node.attr.rack=eu-central-1a
+      - xpack.ml.enabled=false
+      - xpack.security.enabled=true
+      - xpack.security.authc.anonymous.roles=remote_monitoring_collector
+      - xpack.security.authc.realms.file.file1.order=0 
+      - xpack.security.authc.realms.native.native1.order=1
+      - xpack.security.authc.token.enabled=true 
+      - xpack.security.authc.api_key.enabled=true
+      - xpack.license.self_generated.type=trial
+      - xpack.monitoring.collection.enabled=true
+      - cluster.remote.connect=false
+      - path.data=/usr/share/elasticsearch/data/${ELASTIC_RELEASE}
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-XX:UseAVX=2 -Xmx512m -Xms512m"
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+      - ./resources/elasticsearch/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - ./resources/elasticsearch/roles.yml:/usr/share/elasticsearch/config/roles.yml
+      - ./resources/elasticsearch/users:/usr/share/elasticsearch/config/users 
+      - ./resources/elasticsearch/users_roles:/usr/share/elasticsearch/config/users_roles
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "2m"
+    healthcheck:
+      test: curl -s http://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_RELEASE}
+    labels:
+      - "co.elastic.apm.stack-version=${ELASTIC_RELEASE}"
+    container_name: kb01
+    environment:
+      - SERVER_NAME=kb01
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=5601
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+      - ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_USER_PASSWORD}
+      - STATUS_ALLOWANONYMOUS=true
+      - XPACK_APM_SERVICEMAPENABLED=true
+      - XPACK_MONITORING_ENABLED=true
+      - XPACK_SECURITY_LOGINASSISTANCEMESSAGE="Login&#32;details:&#32;`admin/changeme`.&#32;Further&#32;details&#32;[here](https://github.com/elastic/elastic#logging-in)."
+      - XPACK_XPACK_MAIN_TELEMETRY_ENABLED=false
+    ports: 
+      - '5601:5601'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - elasticsearch
+    healthcheck:
+      test: curl -s http://localhost:5601 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: on-failure
+
+  metricbeat:
+    image: docker.elastic.co/beats/metricbeat:${ELASTIC_RELEASE}
+    user: root
+    container_name: mb01
+    environment:
+      - 'APM_SERVER_PPROF_HOST=apm-server:6060'
+    volumes:
+      - ./resources/metricbeat/scripts:/mnt/scripts:ro
+      - ./resources/metricbeat/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc:/hostfs/proc:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /:/hostfs:ro
+    command: >
+       metricbeat -e --strict.perms=false
+       -e -system.hostfs=/hostfs
+       -E "setup.dashboards.enabled=true"
+       -E "output.elasticsearch.hosts=[\"es01:9200\"]"
+       -E "output.elasticsearch.username=metricbeat_user"
+       -E "output.elasticsearch.password=${ELASTIC_USER_PASSWORD}"
+       -E "output.elasticsearch.enabled=true"
+    networks: 
+      - 'elastic'
+    privileged: true
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "2m"
+    depends_on: 
+      - 'elasticsearch'
+      - 'kibana'
+    restart: on-failure
+
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:${ELASTIC_RELEASE}
+    labels:
+      - "co.elastic.apm.stack-version=${ELASTIC_RELEASE}"
+    container_name: apm01
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETGID
+      - SETUID
+    cap_drop:
+      - ALL
+    ports:
+      - '8200:8200'
+      - '6060:6060'
+      - '14268:14268'
+      - '14250:14250'
+    command: >
+      apm-server -e --httpprof :6060
+      -E "apm-server.rum.enabled=true"
+      -E "apm-server.rum.event_rate.limit=1000"
+      -E "apm-server.host=0.0.0.0:8200"
+      -E "apm-server.read_timeout=1m"
+      -E "apm-server.shutdown_timeout=2m"
+      -E "apm-server.write_timeout=1m"
+      -E "logging.json=true"
+      -E "logging.metrics.enabled=false"
+      -E "setup.template.settings.index.number_of_replicas=0"
+      -E "setup.template.settings.index.number_of_shards=1"
+      -E "setup.template.settings.index.refresh_interval=1ms"
+      -E "monitoring.elasticsearch=true"
+      -E "monitoring.enabled=true"
+      -E "apm-server.instrumentation.enabled=true"
+      -E "apm-server.instrumentation.profiling.cpu.enabled=true"
+      -E "apm-server.instrumentation.profiling.heap.enabled=true"
+      -E "apm-server.mode=experimental"
+      -E "apm-server.kibana.enabled=true"
+      -E "apm-server.kibana.host=kb01:5601"
+      -E "apm-server.agent.config.cache.expiration=30s"
+      -E "apm-server.kibana.username=apm_server_user"
+      -E "apm-server.kibana.password=changeme"
+      -E "apm-server.jaeger.http.enabled=true"
+      -E "apm-server.jaeger.http.host=0.0.0.0:14268"
+      -E "apm-server.jaeger.grpc.enabled=true"
+      -E "apm-server.jaeger.grpc.host=0.0.0.0:14250"
+      -E "output.elasticsearch.hosts=['es01:9200']"
+      -E "output.elasticsearch.username=apm_server_user"
+      -E "output.elasticsearch.password=changeme"
+      -E "output.elasticsearch.enabled=true"
+      -E "output.elasticsearch.pipelines=[{pipeline: 'apm'}]"
+      -E "apm-server.register.ingest.pipeline.enabled=true"
+    environment: 
+      - 'ELASTIC_PASSWORD=${ELASTIC_USER_PASSWORD}'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'elasticsearch'
+      - 'kibana'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "2m"
+    healthcheck:
+      test: curl --write-out 'HTTP %{http_code}' -k  -fail --silent --output /dev/null https://localhost:8200/
+      interval: 10s
+      timeout: 10s
+      retries: 12
+
+  postgres:
+    image: postgres:${POSTGRESQL_RELEASE}
+    container_name: pg01
+    environment:
+      - 'POSTGRES_DB=opbeans'
+      - 'POSTGRES_PASSWORD=verysecure'
+    ports: 
+      - "5432:5432"
+    networks: 
+      - 'elastic'
+    volumes:
+      - ./resources/opbeans/sql:/docker-entrypoint-initdb.d
+      - data02:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "2m"
+    healthcheck:
+      test: pg_isready -h pg01 -U postgres
+      interval: 10s
+      timeout: 10s
+      retries: 12
+
+  redis:
+    image: redis:${REDIS_RELEASE}
+    container_name: rd01
+    command: --save ''
+    ports: 
+      - "6379:6379"
+    networks: 
+      - 'elastic'
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "2m"
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 10s
+      retries: 12
+
+  opbeans-node:
+    build:
+      args:
+        - "OPBEANS_NODE_IMAGE=opbeans/opbeans-node"
+        - "OPBEANS_NODE_VERSION=latest"
+      context: "resources/opbeans/node"
+      dockerfile: "Dockerfile"
+    container_name: ob-node01
+    environment:
+      - "ELASTIC_APM_SERVER_URL=http://apm01:8200"
+      - "ELASTIC_APM_JS_SERVER_URL=http://apm01:8200"
+      - "ELASTIC_APM_VERIFY_SERVER_CERT=false"
+      - "ELASTIC_APM_LOG_LEVEL=info"
+      - "ELASTIC_APM_SOURCE_LINES_ERROR_APP_FRAMES"
+      - "ELASTIC_APM_SOURCE_LINES_SPAN_APP_FRAMES=5"
+      - "ELASTIC_APM_SOURCE_LINES_ERROR_LIBRARY_FRAMES"
+      - "ELASTIC_APM_SOURCE_LINES_SPAN_LIBRARY_FRAMES"
+      - "WORKLOAD_ELASTIC_APM_APP_NAME=workload"
+      - "WORKLOAD_ELASTIC_APM_SERVER_URL=http://apm01:8200"
+      - "WORKLOAD_DISABLED=False"
+      - "OPBEANS_SERVER_PORT=3000"
+      - "OPBEANS_SERVER_HOSTNAME=opbeans-node"
+      - "NODE_ENV=production"
+      - "PGHOST=pg01"
+      - "PGPASSWORD=verysecure"
+      - "PGPORT=5432"
+      - "PGUSER=postgres" 
+      - "REDIS_URL=redis://rd01:6379"
+      - "NODE_AGENT_BRANCH="
+      - "NODE_AGENT_REPO="
+      - "OPBEANS_DT_PROBABILITY=0.50"
+      - "ELASTIC_APM_ENVIRONMENT=production"
+      - "OPBEANS_SERVICES=opbeans-node"
+    volumes:
+      - ./resources/opbeans/node/sourcemaps:/sourcemaps
+    ports: 
+      - '3000:3000'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'elasticsearch'
+      - 'kibana'
+      - 'metricbeat'
+      - 'apm-server'
+      - 'postgres'
+      - 'redis'
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "2m"
+    healthcheck:
+      test: wget -q --server-response -0 /dev/null http://ob-node01:3000/
+      interval: 10s
+      timeout: 10s
+      retries: 12
+
+  opbeans-rum:
+    build:
+      context: "resources/opbeans/rum"
+      dockerfile: "Dockerfile"
+    cap_add:
+      - SYS_ADMIN
+    container_name: ob-rum01
+    environment:
+      - "OPBEANS_BASE_URL=http://ob-node01:3000"
+      - "ELASTIC_APM_VERIFY_SERVER_CERT=false"
+    ports: 
+      - '9222:9222'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'opbeans-node'
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "2m"
+    healthcheck:
+      test: curl --write-out 'HTTP %{http_code}' -k  -fail --silent --output /dev/null https://ob-rum01:9222/
+      interval: 10s
+      timeout: 10s
+      retries: 12
+    
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  data01:
+  data02:

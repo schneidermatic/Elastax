@@ -1,0 +1,10 @@
+{
+  "name": "opbeans-frontend-loadgen",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Load generator for opbeans frontend app",
+  "dependencies": {
+    "puppeteer": "^2.0.0",
+    "pm2": "^4.2.0"
+  }
+}

@@ -1,0 +1,129 @@
+---
+version: '3.7'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    container_name: es01
+    ports: 
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es01
+      - http.port=9200
+      - transport.port=9300
+      - cluster.initial_master_nodes=es01
+      - discovery.seed_hosts=es01:9300
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node="hot"
+      - node.attr.rack=eu-central-1a
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+    volumes:
+      - ~/miniobs/miniobs-110/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data01:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl -s http://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kb01:
+    image: docker.elastic.co/kibana/kibana:${TAG}
+    container_name: kb01
+    environment:
+      - SERVER_NAME=kb01
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=5601
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+      - ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_APM_SERVICEMAPENABLED=TRUE
+    ports: 
+      - '5601:5601'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:5601 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  
+  ls01:
+    image: docker.elastic.co/logstash/logstash:${TAG}
+    container_name: ls01
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - PIPELINE_WORKERS="2"
+      - XPACK_MONITORING_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_MONITORING_ELASTICSEARCH_HOSTS=http://es01:9200
+    volumes:
+      - './resources/ls01/pipeline.yml:/usr/share/logstash/config/pipeline.yml'
+      - './resources/ls01/pipeline:/usr/share/logstash/pipeline'
+    ports: 
+      - '9600:9600'
+      - '5044:5044'
+      - '5817:5817'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:9600 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  ls02:
+    image: docker.elastic.co/logstash/logstash:${TAG}
+    container_name: ls02
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - PIPELINE_WORKERS="2"
+      - XPACK_MONITORING_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_MONITORING_ELASTICSEARCH_HOSTS=http://es01:9200
+    volumes:
+      - './resources/ls02/pipeline.yml:/usr/share/logstash/config/pipeline.yml'
+      - './resources/ls02/pipeline:/usr/share/logstash/pipeline'
+    ports: 
+      - '9601:9600'
+      - '8081:8081'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:9600 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  data01:

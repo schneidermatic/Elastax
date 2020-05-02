@@ -1,4 +1,4 @@
-# miniobs-recipes
+# miniobs
 
 miniobs-recipes contains various elastic stack use cases for demo or learning purposes.
 

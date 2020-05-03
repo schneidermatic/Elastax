@@ -1,0 +1,112 @@
+input {
+  http {
+    port => "8082"
+    id => "incident_ticket_forwarder"
+    codec => json_lines
+    type => 'event'
+  }
+}
+
+filter {
+
+   mutate { add_field => { "[@metadata][isLogging]" => "false" } }
+   mutate { add_field => { "[@metadata][isForwarding]" => "true" } }
+
+   ruby {
+      code => '
+
+         event_key_original = []
+         journalUpdate = ""
+
+         event_keys_original = event.to_hash.keys
+         event_keys_new = [ 
+                            "elastic_index",
+                            "created_at",
+                            "owner",
+                            "severity",
+                            "priority",
+                            "category",
+                            "correlation_id",
+                            "description",
+                            "documentation",
+                            "hostname",
+                            "ip_addr",
+                            "source",
+                            "sub_source",
+                            "origin",
+                            "sub_origin",
+                            "it_service",
+                            "business_service",
+                          ]
+
+         journalUpdate = "="*3 + "\n"
+         journalUpdate += "ORIGINAL ELASTIC MESSAGE \n"
+         journalUpdate += "="*3 + "\n"
+
+         event_keys_new.each { |key_new| 
+            if event_keys_original.include?(key_new)
+               journalUpdate += "#{key_new}: " +  event.get(key_new) + "\n"
+            end
+         }
+
+         briefDescription = "elasticsearch" 
+
+         if event_keys_original.include?("description")
+            briefDescription += "/" + event.get("description")
+         end
+
+         event.set("[Incident][AssigneeName]","ID00777")
+         event.set("[Incident][AssigneeFullName]","")
+         event.set("[Incident][AssigneePhone]","")
+         event.set("[Incident][Contact]","ID00777")
+         if event_keys_original.include?("owner")
+            event.set("[Incident][PrimaryAssignmentGroup]", event.get("owner"))
+         end
+         event.set("[Incident][Category]","Observability")
+         event.set("[Incident][JournalUpdates]",journalUpdate)
+         event.set("[Incident][Contact]","ID00777")
+         briefDescription = "elasticsearch" 
+         if event_keys_original.include?("description")
+            briefDescription += "/" + event.get("description")
+         end
+         if event_keys_original.include?("description")
+            event.set("[Incident][BriefDescription]", briefDescription)
+         end
+         event.set("[Incident][Subcategory]","elastic-stack")
+         event.set("[Incident][ProductType]","elasticsearch")
+         if event_keys_original.include?("priority")
+            event.set("[Incident][Priority]", event.get("priority"))
+         end
+
+         ## REMOVE THE NON INCIDENT KEYS
+         event_keys_original.each { |k|
+            event.remove(k)
+         }
+
+         ## CHANGE OUTPUT ACTION
+         event.set("[@metadata][time]",Time.new.strftime("%Y-%m-%d %H:%M:%S"))
+         event.set("[@metadata][isEvent]",1)
+      '
+   }
+}
+
+output {
+                                          
+  if [@metadata][isLogging] == "true" {
+    file {
+        path => '/opt/elastic/logstash/tier2/logs/incident-ticket-forwarder-tier2.log'
+    }
+  }
+
+  if [@metadata][isForwarding] == "true" {
+    if [type] == 'event' {
+        elasticsearch {
+            hosts    => [ 'http://es01:9200' ]
+            index    => "%{[elastic_index]}-%{+YYYY.MM.dd}"
+            user     => "${ELASTIC_USER}"
+            password => "${ELASTIC_PASSWORD}"  # read password from logstash.keystore
+        }
+    }
+  }
+          
+}

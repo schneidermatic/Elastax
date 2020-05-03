@@ -1,7 +1,7 @@
 input {
   heartbeat {
     interval => 5
-    message  => 'Hello from Logstash (ls01)'
+    message  => 'Hello from Logstash (tier1)'
     type => 'heartbeat'
   }
   beats {

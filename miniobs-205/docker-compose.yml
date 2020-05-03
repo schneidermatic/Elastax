@@ -104,7 +104,7 @@ services:
       - 'ELASTIC_USER=${ELASTIC_USER}'
       - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
     volumes:
-      - ./scripts:/mnt/scripts:ro
+      - ./resources/mb01/scripts:/mnt/scripts:ro
       - ./resources/mb01/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /proc:/hostfs/proc:ro

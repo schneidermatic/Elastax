@@ -1,0 +1,41 @@
+filebeat.modules:
+- module: system
+  syslog:
+    var.paths: ["/var/log/host/system.log*"]
+- module: osquery
+  result:
+    enabled: true
+
+
+filebeat.inputs:
+- type: container
+  paths:
+    - /hostfs/var/lib/docker/containers/*/*.log
+  stream: all
+
+processors:
+  - add_cloud_metadata:
+
+fields:
+  elastic_index: "custom_idx"
+
+#output.logstash:
+#  hosts: ["ls01:5044"]
+
+output.elasticsearch:
+  hosts: ['es01:9200']
+  protocol: "http"
+  username: "${ELASTIC_USER}"
+  password: "${ELASTIC_PASSWORD}"
+
+setup.kibana:
+  host: 'kb01:5601'
+  username: "${ELASTIC_USER}"
+  password: "${ELASTIC_PASSWORD}"
+  protocol: "http"
+
+setup.dashboards.enabled: true
+setup.dashboards.retry.enabled: true
+setup.dashboards.retry.interval: 5s
+
+xpack.monitoring.enabled: true

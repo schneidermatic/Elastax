@@ -89,7 +89,7 @@ services:
     ports: 
       - '9600:9600'
       - '5044:5044'
-      - '5817:5817'
+      - '5818:5818'
     networks: 
       - 'elastic'
     depends_on: 

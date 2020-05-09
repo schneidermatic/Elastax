@@ -9,7 +9,7 @@ input {
     type => 'beat'
   }
   http {
-    port => 5817
+    port => 5818
     codec => json_lines
     type => 'event'
   }

@@ -7,6 +7,15 @@ input {
   }
 }
 
+filter {
+  mutate {
+      remove_field => [ "host" ]
+  }
+  mutate {
+      rename => { "host" => "[host][name]" }
+  }
+}
+
 output {
   stdout { codec => rubydebug }
 

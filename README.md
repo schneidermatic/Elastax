@@ -1,6 +1,6 @@
 # miniobs
 
-miniobs-recipes contains various elastic stack use cases for demo or learning purposes.
+miniobs v7.7.0 contains various elastic stack use cases based on elastiv v7.7.0 for demo or learning purposes.
 
 ###### PREREQUISITES
 ---
@@ -52,6 +52,7 @@ miniobs-110  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => L
 Name         | Components                   | Description
 -------------|------------------------------|------------------------------------------------------------------------------------------
 miniobs-205  | 1x es/1x kb/1x ls/1x mb      | 1x Node cluster with a single metricbeat instance
+miniobs-210  | 1x es/1x kb/1x ls/1x fb      | 1x Node cluster with a single filebeat instance
 
 
 ###### APM/Tracing: miniobs-300 - miniobs-400

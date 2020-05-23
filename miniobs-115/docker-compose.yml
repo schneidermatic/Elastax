@@ -31,7 +31,7 @@ services:
       - xpack.security.transport.ssl.key=$CERTS_DIR/es01/es01.key
       - cluster.remote.connect=false
       - path.repo=/usr/share/elasticsearch/backup
-      - "ES_JAVA_OPTS=-Xmx2g -Xms2g"
+      - "ES_JAVA_OPTS=-Xmx1g -Xms1g"
     volumes:
       - ~/miniobs/miniobs-110/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore

@@ -1,0 +1,154 @@
+---
+version: '3.7'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    container_name: es01
+    ports: 
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es01
+      - cluster.initial_master_nodes=es01
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node="hot"
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=$CERTS_DIR/es01/es01.key
+      - xpack.security.http.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.http.ssl.certificate=$CERTS_DIR/es01/es01.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate 
+      - xpack.security.transport.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.transport.ssl.certificate=$CERTS_DIR/es01/es01.crt
+      - xpack.security.transport.ssl.key=$CERTS_DIR/es01/es01.key
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx2g -Xms2g"
+    volumes:
+      - ~/miniobs/miniobs-110/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data01:/usr/share/elasticsearch/data
+      - certs:$CERTS_DIR
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl --cacert $CERTS_DIR/ca/ca.crt -s https://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kb01:
+    image: docker.elastic.co/kibana/kibana:${TAG}
+    container_name: kb01
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - 'CERTS_DIR=${CERTS_DIR}'
+    volumes:
+      - './resources/kb01/kibana.yml:/usr/share/kibana/config/kibana.yml'
+      - certs:$CERTS_DIR
+    ports: 
+      - '5601:5601'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s https://localhost:5601 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  ls01:
+    image: docker.elastic.co/logstash/logstash:${TAG}
+    container_name: ls01
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - 'CERTS_DIR=${CERTS_DIR}'
+      - PIPELINE_WORKERS="2"
+      - HTTP_HOST=0.0.0.0
+      - HTTP_PORT=9601
+      - XPACK_MONITORING_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_MONITORING_COLLECTION_PIPELINE_DETAILS_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_SNIFFING="false"
+      - XPACK_MONITORING_ELASTICSEARCH_INTERVAL=30s
+      - XPACK_MANAGEMENT_PIPELINE_ID=[ "event-tier1" ]
+      - XPACK_MONITORING_ELASTICSEARCH_HOSTS=https://es01:9200
+      - xpack.monitoring.elasticsearch.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
+    volumes:
+      - './resources/ls01/pipelines.yml:/usr/share/logstash/config/pipelines.yml'
+      - './resources/ls01/pipeline:/usr/share/logstash/config/pipeline'
+      - certs:$CERTS_DIR
+    ports: 
+      - '9600:9600'
+      - '5044:5044'
+      - '5818:5818'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:9600 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  ls02:
+    image: docker.elastic.co/logstash/logstash:${TAG}
+    container_name: ls02
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - 'CERTS_DIR=${CERTS_DIR}'
+      - PIPELINE_WORKERS="2"
+      - HTTP_HOST=0.0.0.0
+      - HTTP_PORT=9601
+      - XPACK_MONITORING_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_MONITORING_COLLECTION_PIPELINE_DETAILS_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_SNIFFING="false"
+      - XPACK_MONITORING_ELASTICSEARCH_INTERVAL=30s
+      - XPACK_MANAGEMENT_PIPELINE_ID=[ "event-tier1" ]
+      - XPACK_MONITORING_ELASTICSEARCH_HOSTS=https://es01:9200
+      - xpack.monitoring.elasticsearch.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
+    volumes:
+      - './resources/ls02/pipelines.yml:/usr/share/logstash/config/pipelines.yml'
+      - './resources/ls02/pipeline:/usr/share/logstash/config/pipeline'
+      - certs:$CERTS_DIR
+    ports: 
+      - '9601:9600'
+      - '8081:8081'
+      - '8082:8082'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:9600 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  data01:
+  certs:

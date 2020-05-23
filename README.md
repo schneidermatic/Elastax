@@ -45,6 +45,7 @@ Name         | Components                   | Description
 miniobs-105  | 1x es/1x kb/1x ls            | 1x Node cluster with single Logstash instance
 miniobs-110  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => LS => ES composition
 miniobs-110  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition
+miniobs-115  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition and Alerting feature
 
 
 ###### BEATS: miniobs-200 - miniobs-300

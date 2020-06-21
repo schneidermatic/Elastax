@@ -2,9 +2,9 @@
 version: '3.7'
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}-${ELASTIC_ARCH_TYPE}
     labels:
-      - "co.elastic.apm.stack-version=${ELASTIC_RELEASE}"
+      - "co.elastic.apm.stack-version=${ELASTIC_VERSION}"
     container_name: es01
     ports: 
       - '9200:9200'
@@ -34,7 +34,7 @@ services:
       - xpack.license.self_generated.type=trial
       - xpack.monitoring.collection.enabled=true
       - cluster.remote.connect=false
-      - path.data=/usr/share/elasticsearch/data/${ELASTIC_RELEASE}
+      - path.data=/usr/share/elasticsearch/data/${ELASTIC_VERSION}
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-XX:UseAVX=2 -Xmx512m -Xms512m"
     volumes:
@@ -59,9 +59,9 @@ services:
       retries: 5
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:${ELASTIC_RELEASE}
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
     labels:
-      - "co.elastic.apm.stack-version=${ELASTIC_RELEASE}"
+      - "co.elastic.apm.stack-version=${ELASTIC_VERSION}"
     container_name: kb01
     environment:
       - SERVER_NAME=kb01
@@ -89,7 +89,7 @@ services:
     restart: on-failure
 
   metricbeat:
-    image: docker.elastic.co/beats/metricbeat:${ELASTIC_RELEASE}
+    image: docker.elastic.co/beats/metricbeat:${ELASTIC_VERSION}
     user: root
     container_name: mb01
     environment:
@@ -123,9 +123,9 @@ services:
     restart: on-failure
 
   apm-server:
-    image: docker.elastic.co/apm/apm-server:${ELASTIC_RELEASE}
+    image: docker.elastic.co/apm/apm-server:${ELASTIC_VERSION}
     labels:
-      - "co.elastic.apm.stack-version=${ELASTIC_RELEASE}"
+      - "co.elastic.apm.stack-version=${ELASTIC_VERSION}"
     container_name: apm01
     cap_add:
       - CHOWN

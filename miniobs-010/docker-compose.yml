@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es01
     ports: 
       - '9200:9200'
@@ -18,15 +18,15 @@ services:
       - node.voting_only=false
       - node.data=true
       - node.ingest=true
-      - node.ml=false
+      - node.ml=true
       - node.attr.data_node="hot"
       - node.attr.rack=eu-central-1a
-      - xpack.ml.enabled=false
+      - xpack.ml.enabled=true
       - xpack.license.self_generated.type=trial
       - xpack.security.enabled=true
       - cluster.remote.connect=false
       - path.repo=/usr/share/elasticsearch/backup
-      - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+      - "ES_JAVA_OPTS=-Xmx512m -Xms512m"
     volumes:
       - ~/miniobs/miniobs-010/:/usr/share/elasticsearch/backup:rw
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
@@ -44,7 +44,7 @@ services:
       retries: 5
 
   kb01:
-    image: docker.elastic.co/kibana/kibana:${TAG}
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_RELEASE}
     container_name: kb01
     environment:
       - SERVER_NAME=kb01

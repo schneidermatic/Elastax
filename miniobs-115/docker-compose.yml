@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es01
     ports: 
       - '9200:9200'
@@ -33,7 +33,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx1g -Xms1g"
     volumes:
-      - ~/miniobs/miniobs-110/:/usr/share/elasticsearch/backup
+      - ~/miniobs/miniobs-115/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data01:/usr/share/elasticsearch/data
       - certs:$CERTS_DIR
@@ -50,7 +50,7 @@ services:
       retries: 5
 
   kb01:
-    image: docker.elastic.co/kibana/kibana:${TAG}
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_RELEASE}
     container_name: kb01
     environment:
       - 'ELASTIC_USER=${ELASTIC_USER}'
@@ -72,7 +72,7 @@ services:
       retries: 5
 
   ls01:
-    image: docker.elastic.co/logstash/logstash:${TAG}
+    image: docker.elastic.co/logstash/logstash:${ELASTIC_RELEASE}
     container_name: ls01
     environment:
       - 'ELASTIC_USER=${ELASTIC_USER}'
@@ -109,7 +109,7 @@ services:
       retries: 5
 
   ls02:
-    image: docker.elastic.co/logstash/logstash:${TAG}
+    image: docker.elastic.co/logstash/logstash:${ELASTIC_RELEASE}
     container_name: ls02
     environment:
       - 'ELASTIC_USER=${ELASTIC_USER}'

@@ -2,5 +2,7 @@
 # For more information on multiple pipelines, see the documentation:
 #   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
 
-- pipeline.id: ls01-main
-  path.config: /usr/share/logstash/pipeline/ls01-main.conf
+- pipeline.id: event-tier1
+  pipeline.workers: "1"
+  pipeline.batch.size: "1"
+  path.config: /usr/share/logstash/pipeline/event.pipeline

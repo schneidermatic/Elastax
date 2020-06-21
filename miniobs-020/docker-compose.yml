@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es01
     ports: 
       - '9200:9200'
@@ -45,7 +45,7 @@ services:
       retries: 5
 
   es02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es02
     ports: 
       - '9201:9201'
@@ -88,7 +88,7 @@ services:
       retries: 5
 
   es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es03
     ports: 
       - '9202:9202'
@@ -129,7 +129,7 @@ services:
       retries: 5
 
   es04:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es04
     ports: 
       - '9203:9203'
@@ -172,7 +172,7 @@ services:
       retries: 5
 
   es05:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es05
     ports: 
       - '9204:9204'
@@ -215,7 +215,7 @@ services:
       retries: 5
 
   kb01:
-    image: docker.elastic.co/kibana/kibana:${TAG}
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_RELEASE}
     container_name: kb01
     environment:
       - SERVER_NAME=kb01

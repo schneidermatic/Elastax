@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
     container_name: es01
     ports: 
       - '9200:9200'
@@ -44,7 +44,7 @@ services:
       retries: 5
 
   kb01:
-    image: docker.elastic.co/kibana/kibana:${TAG}
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_RELEASE}
     container_name: kb01
     environment:
       - SERVER_NAME=kb01
@@ -67,7 +67,7 @@ services:
       retries: 5
   
   ls01:
-    image: docker.elastic.co/logstash/logstash:${TAG}
+    image: docker.elastic.co/logstash/logstash:${ELASTIC_RELEASE}
     container_name: ls01
     environment:
       - 'ELASTIC_USER=${ELASTIC_USER}'
@@ -78,13 +78,14 @@ services:
       - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
       - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
       - XPACK_MONITORING_ELASTICSEARCH_HOSTS="http://es01:9200"
-      - XPACK_MANAGEMENT_ENABLED="true"
-      - XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS="http://es01:9200"
-      - XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL=5s
-      - XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
-      - XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
-      - XPACK_MANAGEMENT_PIPELINE_ID=[ "ls01-main" ]
-      #- XPACK_MANAGEMENT_PIPELINE_ID=[ ]
+      - XPACK_MONITORING_COLLECTION_INTERVAL="30s"
+      - XPACK_MONITORING_COLLECTION_PIPELINE_DETAILS_ENABLED="true"
+      #- XPACK_MANAGEMENT_ENABLED="true"
+      #- XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS="http://es01:9200"
+      #- XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL=5s
+      #- XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      #- XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      #- XPACK_MANAGEMENT_PIPELINE_ID=[ "event-tier1" ]
     volumes:
       - './resources/ls01/pipelines.yml:/usr/share/logstash/config/pipelines.yml'
       - './resources/ls01/pipeline:/usr/share/logstash/pipeline'

@@ -1,6 +1,10 @@
-# Receipe 115 - Alerting feature
+# Recipe 115 - Alerting Feature
 
-miniobs v7.8.1 contains various elastic stack use cases based on elastiv v7.8.1 for demo or learning purposes.
+The recipe is for testing the new 'Alerting' feature which is shipped with the new elastic stack 'v7.8.x'\
+The following description helps you to get up and running without any effort.
+
+This is made with Herblut/2020 - so please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+if you like the project.\ Thank you in advance!
 
 
 SETUP

@@ -27,12 +27,12 @@ SETUP
     due to the modifications of the kernel parameter.
       
 03. a) Choose the use cases miniobs-115 and generate the ssl-certificate which is needed for running\
-   Kibana in a secure mode so that the alerting can be enabled.
+   Kibana in a secure mode so that the 'Alerting' can be enabled.
 
         $ cd ~/miniobs/miniobs-115
         $ docker-compose -f create-certs.yml run --rm create_certs
 
-   b) After the ssl-cert & ssl-key is generated you can start the elastic stack
+    b) After the ssl-cert & ssl-key is generated you can start the elastic stack
 
         $ docker-compose up -d 
 
@@ -65,17 +65,26 @@ SETUP
 
    Create your first alert.
 
+
+Stop and Start the elastic stack
+---
+
 08. Stop the docker containers
 
         $ docker-compose stop
 
 09. Start the docker containers
 
-        $ docker-compose start  
+        $ docker-compose start 
+
+Remove the entire stack
+---
 
 10. Remove the docker containers
 
         $ docker-compose down -v
+
+    **NOTE:** when you run 'docker-compose down -v' you'll loose all your data too.
 
 CONTRIBUTING
 ---

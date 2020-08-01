@@ -1,4 +1,4 @@
-# Recipe 115 - Alerting Feature
+# miniobs-115 - Alerting Feature
 
 The recipe is for testing the new 'Alerting' feature which is shipped with the new elastic stack 'v7.8.x'\
 The following description helps you to get up and running without any effort.

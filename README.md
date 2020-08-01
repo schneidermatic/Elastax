@@ -5,7 +5,6 @@ miniobs v7.8.1 contains various elastic stack use cases based on elastiv v7.8.1 
 ###### ELASTIC STACK RELEASE NOTES
 ---
 Basic Release notes for Elastic Stack release v7.8.x \
-[I'm an inline-style link](https://www.google.com)
 Elastic Stack: [https://www.elastic.co/de/blog/whats-new-in-elastic-stack-7-8-0-release](https://www.elastic.co/de/blog/whats-new-in-elastic-stack-7-8-0-release) \
 Elasticsearch: [https://www.elastic.co/de/blog/elasticsearch-7-8-0-released](https://www.elastic.co/de/blog/elasticsearch-7-8-0-released) \
 Kibana: [https://www.elastic.co/de/blog/kibana-7-8-0-released](https://www.elastic.co/de/blog/kibana-7-8-0-released) \

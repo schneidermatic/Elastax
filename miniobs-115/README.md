@@ -45,7 +45,7 @@ SETUP
         user: elastic
         password: changeme
 
-   ![Kibana Login] resources/assets/images/miniobs-115_pict-01.png
+   ![Kibana Login](resources/assets/images/miniobs-115_pict-01.png)
 
 5. Stop the docker containers
 

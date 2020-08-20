@@ -4,9 +4,7 @@ miniobs v7.9.0 contains various elastic stack use cases based on elastiv v7.9.0 
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Basic Release notes for Elastic Stack release v7.9.x <br/>
-
-Elastic Blog Post: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0)
+Elastic Blog Post: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0) <br/>
 Elastic Stack Release: [hhttps://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security](https://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security) <br/>
 
 Elastic Stack <br/>

@@ -4,19 +4,19 @@ miniobs v7.9.0 contains various elastic stack use cases based on elastiv v7.9.0 
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Basic Release notes for Elastic Stack release v7.9.x \
+Basic Release notes for Elastic Stack release v7.9.x <br/>
 
 Elastic Blog Post: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0)
-Elastic Stack Release: [hhttps://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security](https://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security) \
+Elastic Stack Release: [hhttps://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security](https://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security) <br/>
 
-Elastic Stack \
-Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0) \
-Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads](https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads) \
+Elastic Stack <br/>
+Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0) <br/>
+Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads](https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads) <br/>
 
-Elastic Solutions \
-Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access)
-Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard](https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard) \
-Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security](https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security) \
+Elastic Solutions <br/>
+Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access) <br/>
+Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard](https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard) <br/>
+Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security](https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security) <br/>
 
 
 ###### PREREQUISITES

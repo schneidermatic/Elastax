@@ -1,21 +1,22 @@
 # miniobs
 
-miniobs v7.8.1 contains various elastic stack use cases based on elastiv v7.8.1 for demo or learning purposes.
+miniobs v7.9.0 contains various elastic stack use cases based on elastiv v7.9.0 for demo or learning purposes.
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Basic Release notes for Elastic Stack release v7.8.x \
-Elastic Stack: [https://www.elastic.co/de/blog/whats-new-in-elastic-stack-7-8-0-release](https://www.elastic.co/de/blog/whats-new-in-elastic-stack-7-8-0-release) \
-Elasticsearch: [https://www.elastic.co/de/blog/elasticsearch-7-8-0-released](https://www.elastic.co/de/blog/elasticsearch-7-8-0-released) \
-Kibana: [https://www.elastic.co/de/blog/kibana-7-8-0-released](https://www.elastic.co/de/blog/kibana-7-8-0-released) \
-Elastic Observability: [https://www.elastic.co/de/blog/elastic-observability-7-8-0-released](https://www.elastic.co/de/blog/elastic-observability-7-8-0-released) \
-Elastic Security: [https://www.elastic.co/de/blog/elastic-security-7-8-0-released](https://www.elastic.co/de/blog/elastic-security-7-8-0-released) \
+Basic Release notes for Elastic Stack release v7.9.x \
 
-Dedicated Release notes for Elastic Stack release v7.8.1 \
-Elastic Stack: [https://www.elastic.co/de/blog/elastic-stack-7-8-1-released](https://www.elastic.co/de/blog/elastic-stack-7-8-1-released) \
-Elasticsearch: [https://www.elastic.co/guide/en/elasticsearch/reference/7.8/release-notes-7.8.1.html](https://www.elastic.co/guide/en/elasticsearch/reference/7.8/release-notes-7.8.1.html) \
-Kibana: [https://www.elastic.co/guide/en/kibana/7.8/release-notes-7.8.1.html](https://www.elastic.co/guide/en/kibana/7.8/release-notes-7.8.1.html) \
-Beats:[https://www.elastic.co/guide/en/beats/libbeat/7.8/release-notes-7.8.1.html](https://www.elastic.co/guide/en/beats/libbeat/7.8/release-notes-7.8.1.html) \
+Elastic Blog Post: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0)
+Elastic Stack Release: [hhttps://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security](https://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security) \
+
+Elastic Stack \
+Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0) \
+Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads](https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads) \
+
+Elastic Solutions \
+Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access)
+Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard](https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard) \
+Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security](https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security) \
 
 
 ###### PREREQUISITES

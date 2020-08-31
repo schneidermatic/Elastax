@@ -1,0 +1,200 @@
+---
+version: '3.7'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
+    container_name: es01
+    ports: 
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es01
+      - cluster.initial_master_nodes=es01
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node="hot"
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=$CERTS_DIR/es01/es01.key
+      - xpack.security.http.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.http.ssl.certificate=$CERTS_DIR/es01/es01.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate 
+      - xpack.security.transport.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.transport.ssl.certificate=$CERTS_DIR/es01/es01.crt
+      - xpack.security.transport.ssl.key=$CERTS_DIR/es01/es01.key
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx1g -Xms1g"
+    volumes:
+      - ~/miniobs/miniobs-115/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data01:/usr/share/elasticsearch/data
+      - certs:$CERTS_DIR
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl --cacert $CERTS_DIR/ca/ca.crt -s https://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kb01:
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_RELEASE}
+    container_name: kb01
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - 'CERTS_DIR=${CERTS_DIR}'
+    volumes:
+      - './resources/kb01/kibana.yml:/usr/share/kibana/config/kibana.yml'
+      - certs:$CERTS_DIR
+    ports: 
+      - '5601:5601'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s https://localhost:5601 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  ls01:
+    image: docker.elastic.co/logstash/logstash:${ELASTIC_RELEASE}
+    container_name: ls01
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - 'CERTS_DIR=${CERTS_DIR}'
+      - PIPELINE_WORKERS="2"
+      - HTTP_HOST=0.0.0.0
+      - HTTP_PORT=9601
+      - XPACK_MONITORING_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_MONITORING_COLLECTION_PIPELINE_DETAILS_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_SNIFFING="false"
+      - XPACK_MONITORING_ELASTICSEARCH_INTERVAL=30s
+      - XPACK_MANAGEMENT_PIPELINE_ID=[ "event-tier1" ]
+      - XPACK_MONITORING_ELASTICSEARCH_HOSTS=https://es01:9200
+      - xpack.monitoring.elasticsearch.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
+    volumes:
+      - './resources/ls01/pipelines.yml:/usr/share/logstash/config/pipelines.yml'
+      - './resources/ls01/pipeline:/usr/share/logstash/config/pipeline'
+      - certs:$CERTS_DIR
+    ports: 
+      - '9600:9600'
+      - '5044:5044'
+      - '5818:5818'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:9600 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  ls02:
+    image: docker.elastic.co/logstash/logstash:${ELASTIC_RELEASE}
+    container_name: ls02
+    environment:
+      - 'ELASTIC_USER=${ELASTIC_USER}'
+      - 'ELASTIC_PASSWORD=${ELASTIC_PASSWORD}'
+      - 'CERTS_DIR=${CERTS_DIR}'
+      - PIPELINE_WORKERS="2"
+      - HTTP_HOST=0.0.0.0
+      - HTTP_PORT=9601
+      - XPACK_MONITORING_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - XPACK_MONITORING_COLLECTION_PIPELINE_DETAILS_ENABLED="true"
+      - XPACK_MONITORING_ELASTICSEARCH_SNIFFING="false"
+      - XPACK_MONITORING_ELASTICSEARCH_INTERVAL=30s
+      - XPACK_MANAGEMENT_PIPELINE_ID=[ "event-tier1" ]
+      - XPACK_MONITORING_ELASTICSEARCH_HOSTS=https://es01:9200
+      - xpack.monitoring.elasticsearch.ssl.certificate_authority=$CERTS_DIR/ca/ca.crt
+    volumes:
+      - './resources/ls02/pipelines.yml:/usr/share/logstash/config/pipelines.yml'
+      - './resources/ls02/pipeline:/usr/share/logstash/config/pipeline'
+      - certs:$CERTS_DIR
+    ports: 
+      - '9601:9600'
+      - '8081:8081'
+      - '8082:8082'
+    networks: 
+      - 'elastic'
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:9600 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kl01:
+    image: schneidermatic/korrelator:${KORRELATOR_RELEASE}
+    container_name: "korrelator"
+    environment:
+      - APP_NAME=korrelator
+      - APP_DESCRIPTION="Rule based event correlation service for Elasticsearch."
+      - APP_RELEASE=${KORRELATOR_RELEASE}
+      - APP_IPADDRESS=0.0.0.0
+      - APP_PORT=8000
+      - APP_CORRELATOR_NAME=korrelator
+      - APP_CONFIG_NAME=production
+      - APP_ADMIN_USER="admin"
+      - APP_ADMIN_PASSWORD="password"
+      - APP_THREAD_NUMB=1
+      - APP_SLEEP_TIME=1
+      - APP_LOG_DIR=./
+      - APP_LOG_TYPE=stream
+      - APP_LOG_LEVEL=INFO
+      - APP_MAIN_LOG_NAME=app.log
+      - APP_WWW_LOG_NAME=www.log
+      - APP_LOG_MAX_BYTES=100_000_000
+      - APP_LOG_COPIES=5
+      - APP_ES_HOST=es01
+      - APP_ES_PORT=9200
+      - APP_ES_USER=elastic
+      - APP_ES_PASSWORD=changeme
+      - APP_ES_EVENT_SRC_IDX=alert
+      - APP_ES_EVENT_DEST_IDX=incident
+      - APP_ES_USE_SSL=True
+      - APP_ES_VERIFY_CERTS=False
+      - APP_ES_CA_CERTS=/korrelator/ssl/elasticsearch.cer
+    restart: always
+    ports: 
+      - '8000:8000'
+    volumes:
+      - ./resources/ssl/:/korrelator/ssl
+    networks:    
+      - elastic
+    depends_on: 
+      - 'es01'
+    healthcheck:
+      test: curl -s http://localhost:9200/api/v1/ >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  data01:
+  certs:

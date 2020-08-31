@@ -1,0 +1,18 @@
+
+
+
+server.name: kb01
+server.host: "0"
+server.port: 5601
+elasticsearch.hosts: [ "https://es01:9200" ]
+elasticsearch.username: ${ELASTIC_USER}
+elasticsearch.password: ${ELASTIC_PASSWORD}
+server.ssl.enabled: true
+server.ssl.certificate: ${CERTS_DIR}/kb01/kb01.crt
+server.ssl.key: ${CERTS_DIR}/kb01/kb01.key
+elasticsearch.ssl.certificateAuthorities: [ "${CERTS_DIR}/ca/ca.crt" ]
+elasticsearch.ssl.verificationMode: none
+xpack.security.enabled: true
+xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
+xpack.security.session.idleTimeout: "10m"
+xpack.security.session.lifespan: "8h"

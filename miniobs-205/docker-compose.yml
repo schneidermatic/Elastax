@@ -19,7 +19,7 @@ services:
       - node.data=true
       - node.ingest=true
       - node.ml=false
-      - node.attr.data_node="hot"
+      - node.attr.data_node=hot
       - node.attr.rack=eu-central-1a
       - xpack.ml.enabled=false
       - xpack.license.self_generated.type=trial

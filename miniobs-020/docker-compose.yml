@@ -19,7 +19,7 @@ services:
       - node.data=true
       - node.ingest=true
       - node.ml=false
-      - node.attr.data_node="hot"
+      - node.attr.data_node=hot
       - node.attr.rack=eu-central-1a
       - indices.lifecycle.poll_interval=2m
       - xpack.ml.enabled=false
@@ -62,7 +62,7 @@ services:
       - node.data=true
       - node.ingest=true
       - node.ml=false
-      - node.attr.data_node="warm"
+      - node.attr.data_node=warm
       - node.attr.rack=eu-central-1a
       - indices.lifecycle.poll_interval=2m
       - xpack.ml.enabled=false
@@ -146,7 +146,7 @@ services:
       - node.data=true
       - node.ingest=true
       - node.ml=false
-      - node.attr.data_node="hot"
+      - node.attr.data_node=hot
       - node.attr.rack=eu-central-1c
       - indices.lifecycle.poll_interval=2m
       - xpack.ml.enabled=false
@@ -189,7 +189,7 @@ services:
       - node.data=true
       - node.ingest=true
       - node.ml=false
-      - node.attr.data_node="warm"
+      - node.attr.data_node=warm
       - node.attr.rack=eu-central-1c
       - indices.lifecycle.poll_interval=2m
       - xpack.ml.enabled=false

@@ -16,7 +16,7 @@ services:
       - node.data=true
       - node.ingest=true
       - node.ml=false
-      - node.attr.data_node="hot"
+      - node.attr.data_node=hot
       - xpack.ml.enabled=false
       - xpack.license.self_generated.type=trial
       - xpack.security.enabled=true

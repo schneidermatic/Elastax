@@ -59,7 +59,7 @@ Name         | Components                   | Description
 -------------|------------------------------|------------------------------------------------------------------------------------------
 miniobs-105  | 1x es/1x kb/1x ls            | 1x Node cluster with single Logstash instance
 miniobs-110  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => LS => ES composition
-miniobs-110  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition
+miniobs-115  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition
 miniobs-115  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition and Alerting feature
 
 
@@ -83,6 +83,12 @@ miniobs-305  | 1x es/1x kb/1x apm/1x nodejs | 1x Node cluster with a single apm 
 Name         | Components                   | Description
 -------------|------------------------------|------------------------------------------------------------------------------------------
 miniobs-510  | Full Stack Basic             | With SSL
+
+###### THIRD PARTY: miniobs-600 - miniobs-700
+---
+Name         | Components                   | Description
+-------------|------------------------------|------------------------------------------------------------------------------------------
+miniobs-605  | 1x es/1x kb/1x kl            | 1x Node cluster with Alerting feature and Korrelator service
 
 
 SETUP

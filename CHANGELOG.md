@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## miniobs-7.9.2/2020-10-20/schneidermatic
+
+### ADDED:
+- miniobs-605 was added to the miniobs recipes
+
 ## miniobs-7.9.2/2020-10-06/schneidermatic
 
 ### ADDED:

@@ -4,17 +4,17 @@ miniobs v7.9.2 contains various elastic stack use cases based on elastiv v7.9.2 
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Elastic Blog Post: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-9-0) <br/>
-Elastic Stack Release: [hhttps://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security](https://www.elastic.co/de/blog/whats-new-in-elastic-7-9-0-free-workplace-search-engine-endpoint-security) <br/>
+Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-10-0-searchable-snapshots-lens-user-experience-monitoring](https://www.elastic.co/blog/whats-new-elastic-7-10-0-searchable-snapshots-lens-user-experience-monitoring) <br/>
+
 
 Elastic Stack <br/>
-Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0](https://www.elastic.co/blog/whats-new-elasticsearch-7-9-0) <br/>
-Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads](https://www.elastic.co/blog/whats-new-kibana-7-9-0-new-architecture-instant-page-loads) <br/>
+Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-10-0-searchable-snapshots-store-more-for-less](https://www.elastic.co/blog/whats-new-elasticsearch-7-10-0-searchable-snapshots-store-more-for-less) <br/>
+Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-10-0-kibana-lens-generally-available](https://www.elastic.co/blog/whats-new-kibana-7-10-0-kibana-lens-generally-available) <br/>
 
 Elastic Solutions <br/>
-Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-9-0-free-workplace-search-kibana-access) <br/>
-Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard](https://www.elastic.co/blog/whats-new-elastic-observability-7-9-0-unified-agent-kpi-overview-dashboard) <br/>
-Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security](https://www.elastic.co/blog/whats-new-elastic-security-7-9-0-free-endpoint-security) <br/>
+Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-10-0-slack-connector-increased-doc-security](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-10-0-slack-connector-increased-doc-security) <br/>
+Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-10-0-user-experience-monitoring-synthetics](https://www.elastic.co/blog/whats-new-elastic-observability-7-10-0-user-experience-monitoring-synthetics) <br/>
+Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-10-0-correlation-cloud-visibility-detection](https://www.elastic.co/blog/whats-new-elastic-security-7-10-0-correlation-cloud-visibility-detection) <br/>
 
 
 ###### PREREQUISITES

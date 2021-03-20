@@ -1,6 +1,6 @@
 # miniobs
 
-miniobs v7.10.2 contains various elastic stack use cases based on elastiv v7.10.2 for demo or learning purposes.
+miniobs v7.11.1 contains various elastic stack use cases based on elastiv v7.11.1 for demo or learning purposes.
 
 ###### ELASTIC STACK RELEASE NOTES
 ---

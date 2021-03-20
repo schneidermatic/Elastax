@@ -4,17 +4,17 @@ miniobs v7.10.2 contains various elastic stack use cases based on elastiv v7.10.
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-10-0-searchable-snapshots-lens-user-experience-monitoring](https://www.elastic.co/blog/whats-new-elastic-7-10-0-searchable-snapshots-lens-user-experience-monitoring) <br/>
+Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-11-0-searchable-snapshots-schema-on-read](https://www.elastic.co/blog/whats-new-elastic-7-11-0-searchable-snapshots-schema-on-read) <br/>
 
 
 Elastic Stack <br/>
-Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-10-0-searchable-snapshots-store-more-for-less](https://www.elastic.co/blog/whats-new-elasticsearch-7-10-0-searchable-snapshots-store-more-for-less) <br/>
-Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-10-0-kibana-lens-generally-available](https://www.elastic.co/blog/whats-new-kibana-7-10-0-kibana-lens-generally-available) <br/>
+Elasticsearch: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-11-0-schema-on-read-is-here](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-11-0-schema-on-read-is-here) <br/>
+Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-11-0-alerting-generally-available](https://www.elastic.co/blog/whats-new-kibana-7-11-0-alerting-generally-available) <br/>
 
 Elastic Solutions <br/>
-Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-10-0-slack-connector-increased-doc-security](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-10-0-slack-connector-increased-doc-security) <br/>
-Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-10-0-user-experience-monitoring-synthetics](https://www.elastic.co/blog/whats-new-elastic-observability-7-10-0-user-experience-monitoring-synthetics) <br/>
-Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-10-0-correlation-cloud-visibility-detection](https://www.elastic.co/blog/whats-new-elastic-security-7-10-0-correlation-cloud-visibility-detection) <br/>
+Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-11-0-web-crawler-box-content-source](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-11-0-web-crawler-box-content-source) <br/>
+Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-11-0-apm-service-overview-page-ecs-logging-library-ga](https://www.elastic.co/blog/whats-new-elastic-observability-7-11-0-apm-service-overview-page-ecs-logging-library-ga) <br/>
+Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-11-0-cloud-host-detections-accessible-UI](https://www.elastic.co/blog/whats-new-elastic-security-7-11-0-cloud-host-detections-accessible-UI) <br/>
 
 
 ###### PREREQUISITES

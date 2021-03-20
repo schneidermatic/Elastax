@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## miniobs-7.11.2/2020-03-20/schneidermatic
+
+### ADDED:
+- Branch miniobs-7.11.2 was added.
+
 ## miniobs-7.11.1/2020-03-20/schneidermatic
 
 ### ADDED:

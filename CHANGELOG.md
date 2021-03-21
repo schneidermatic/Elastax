@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## miniobs-7.11.2/2020-03-21/schneidermatic
+
+### CHANGES:
+- Added recipe 'miniobs-025'
+- Updated recipe 'miniobs-015'
+- Changed '.envrc' to '.xrc' file
+
 ## miniobs-7.11.2/2020-03-20/schneidermatic
 
 ### ADDED:

@@ -48,8 +48,9 @@ Name         | Components                   | Description
 -------------|------------------------------|------------------------------------------------------------------------------------------
 miniobs-005  | 1x es/1x kb                  | 1x Node cluster with minimal (starter) config 
 miniobs-010  | 1x es/1x kb                  | 1x Node cluster with extended config, basic security and license features
-miniobs-015  | 3x es/1x kb                  | 3x Node cluster with extended config, basic security and license features
-miniobs-020  | 5x es/1x kb                  | 5x Node cluster with extended config, basic security and license features
+miniobs-015  | 1x es/1x kb                  | 1x Node cluster with extended config, extended security (ssl) and license features
+miniobs-020  | 3x es/1x kb                  | 3x Node cluster with extended config, basic security and license features
+miniobs-025  | 5x es/1x kb                  | 5x Node cluster with extended config, basic security and license features
 
 
 ###### LOGSTASH: miniobs-100 - miniobs-200
@@ -104,7 +105,7 @@ SETUP
 2. Setup your environment
 
         $ cd miniobs
-        $ source ./.envrc
+        $ source ./.xrc
         $ x_setup
 
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\

@@ -12,8 +12,8 @@ services:
       - node.name=es01
       - http.port=9200
       - transport.port=9300
-      - cluster.initial_master_nodes=es01,es02,es03
-      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302
+      - cluster.initial_master_nodes=es01,es02,es03,es04,es05
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302,es04:9303,es05:9304
       - node.master=true
       - node.voting_only=false
       - node.data=true
@@ -21,6 +21,7 @@ services:
       - node.ml=false
       - node.attr.data_node=hot
       - node.attr.rack=eu-central-1a
+      - indices.lifecycle.poll_interval=2m
       - xpack.ml.enabled=false
       - xpack.license.self_generated.type=trial
       - xpack.security.enabled=true
@@ -28,7 +29,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
     volumes:
-      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ~/miniobs/miniobs-020/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data01:/usr/share/elasticsearch/data
     ulimits:
@@ -54,15 +55,16 @@ services:
       - node.name=es02
       - http.port=9201
       - transport.port=9301
-      - cluster.initial_master_nodes=es01,es02,es03
-      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302
+      - cluster.initial_master_nodes=es01,es02,es03,es04,es05
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302,es04:9303,es05:9304
       - node.master=true
       - node.voting_only=false
       - node.data=true
       - node.ingest=true
       - node.ml=false
-      - node.attr.data_node=hot
-      - node.attr.rack=eu-central-1b
+      - node.attr.data_node=warm
+      - node.attr.rack=eu-central-1a
+      - indices.lifecycle.poll_interval=2m
       - xpack.ml.enabled=false
       - xpack.license.self_generated.type=trial
       - xpack.security.enabled=true
@@ -70,7 +72,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
     volumes:
-      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ~/elastax/elastax-004/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data02:/usr/share/elasticsearch/data
     ulimits:
@@ -96,15 +98,14 @@ services:
       - node.name=es03
       - http.port=9202
       - transport.port=9302
-      - cluster.initial_master_nodes=es01,es02,es03
-      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302
+      - cluster.initial_master_nodes=es01,es02,es03,es04,es05
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302,es04:9303,es05:9304
       - node.master=true
       - node.voting_only=false
-      - node.data=true
-      - node.ingest=true
+      - node.data=false
+      - node.ingest=false
       - node.ml=false
-      - node.attr.data_node=hot
-      - node.attr.rack=eu-central-1c
+      - node.attr.rack=eu-central-1b
       - xpack.ml.enabled=false
       - xpack.license.self_generated.type=trial
       - xpack.security.enabled=true
@@ -112,9 +113,95 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
     volumes:
-      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ~/elastax/elastax-004/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data03:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl -s http://localhost:9202 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  es04:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
+    container_name: es04
+    ports: 
+      - '9203:9203'
+      - '9303:9303'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es04
+      - http.port=9203
+      - transport.port=9303
+      - cluster.initial_master_nodes=es01,es02,es03,es04,es05
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302,es04:9303,es05:9304
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node=hot
+      - node.attr.rack=eu-central-1c
+      - indices.lifecycle.poll_interval=2m
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+    volumes:
+      - ~/elastax/elastax-004/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data04:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: 
+      - 'elastic'
+    healthcheck:
+      test: curl -s http://localhost:9202 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  es05:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_RELEASE}-${ELASTIC_ARCH_TYPE}
+    container_name: es05
+    ports: 
+      - '9204:9204'
+      - '9304:9304'
+    environment:
+      - cluster.name=es-cluster01
+      - node.name=es05
+      - http.port=9204
+      - transport.port=9304
+      - cluster.initial_master_nodes=es01,es02,es03,es04,es05
+      - discovery.seed_hosts=es01:9300,es02:9301,es03:9302,es04:9303,es05:9304
+      - node.master=true
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=true
+      - node.ml=false
+      - node.attr.data_node=warm
+      - node.attr.rack=eu-central-1c
+      - indices.lifecycle.poll_interval=2m
+      - xpack.ml.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=true
+      - cluster.remote.connect=false
+      - path.repo=/usr/share/elasticsearch/backup
+      - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+    volumes:
+      - ~/elastax/elastax-004/:/usr/share/elasticsearch/backup
+      - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
+      - data05:/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
@@ -153,8 +240,14 @@ services:
 networks:
   elastic:
     driver: bridge
-
+    
 volumes:
   data01:
   data02:
   data03:
+  data04:
+  data05:
+
+
+
+

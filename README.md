@@ -1,20 +1,20 @@
 # miniobs
 
-miniobs v7.11.2 contains various elastic stack use cases based on elastiv v7.11.2 for demo or learning purposes.
+miniobs v7.12.0 contains various elastic stack use cases based on elastiv v7.12.0 for demo or learning purposes.
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-11-0-searchable-snapshots-schema-on-read](https://www.elastic.co/blog/whats-new-elastic-7-11-0-searchable-snapshots-schema-on-read) <br/>
+Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-12-0-schema-on-read-frozen-tier-autoscaling](https://www.elastic.co/blog/whats-new-elastic-7-12-0-schema-on-read-frozen-tier-autoscaling) <br/>
 
 
 Elastic Stack <br/>
-Elasticsearch: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-11-0-schema-on-read-is-here](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-11-0-schema-on-read-is-here) <br/>
-Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-11-0-alerting-generally-available](https://www.elastic.co/blog/whats-new-kibana-7-11-0-alerting-generally-available) <br/>
+Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-12-0-put-a-search-box-on-s3](https://www.elastic.co/blog/whats-new-elasticsearch-7-12-0-put-a-search-box-on-s3) <br/>
+Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-12-0-manage-long-running-searches-in-background](https://www.elastic.co/blog/whats-new-kibana-7-12-0-manage-long-running-searches-in-background) <br/>
 
 Elastic Solutions <br/>
-Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-11-0-web-crawler-box-content-source](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-11-0-web-crawler-box-content-source) <br/>
-Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-11-0-apm-service-overview-page-ecs-logging-library-ga](https://www.elastic.co/blog/whats-new-elastic-observability-7-11-0-apm-service-overview-page-ecs-logging-library-ga) <br/>
-Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-11-0-cloud-host-detections-accessible-UI](https://www.elastic.co/blog/whats-new-elastic-security-7-11-0-cloud-host-detections-accessible-UI) <br/>
+Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-12-0-web-crawler-updates-optimized-performance](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-12-0-web-crawler-updates-optimized-performance) <br/>
+Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-12-0-apm-correlations-opentelemetry-native-support](https://www.elastic.co/blog/whats-new-elastic-observability-7-12-0-apm-correlations-opentelemetry-native-support) <br/>
+Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-12-0-analyst-driven-correlation-ransomware-prevention](https://www.elastic.co/blog/whats-new-elastic-security-7-12-0-analyst-driven-correlation-ransomware-prevention) <br/>
 
 
 ###### PREREQUISITES

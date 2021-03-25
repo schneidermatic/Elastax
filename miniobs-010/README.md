@@ -1,53 +1,89 @@
-# MINIOBS
+# miniobs-010 Basic
 
-MINIOBS-002 is an elastic stack consisting of elasticsearch and kibana. MINIOBS-002 has the trial license and the basic security features enabled. So all paid features are activated (Machine Learning, Watcher etc ...). 
+This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. miniobs-010 has the trial license 
+and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...).
 
+This is made with Herblut/2021 - so please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+if you like the project.\ Thank you in advance!
 
-PREREQUISITES
+###### PREREQUISITES
 ---
-For running the MINIOBS stack you should order an 'EntwicklerVM' with the following performance:
+For running the miniobs-recipes(s) you need the following software components on your host system
 
-Name           | Amount        
+Name           | Reference    
 -------------- | --------------- 
-CPU            | 4x
-MEMORY         | 16384 (MB)
-STORAGE        | 40 (GB)
+ubuntu         | >= 18.04.5 LTS (Bionic Beaver)
+docker         | [https://docs.docker.com/engine/reference/run/](https://docs.docker.com/engine/reference/run/)
+docker-compose | [https://docs.docker.com/compose/reference/overview/](https://docs.docker.com/compose/reference/overview/)
 
-Run the Stack
+SETUP
 ---
 
-Run the miniobs-002 stack
+01. Clone the miniobs repo ( => if it's already done - skip this point!)
 
-1. To run miniobs-002 you have to go to the cloned 'miniobs-002' directory
+        $ cd ~
+        $ mkdir miniobs-ws01
+        $ cd miniobs-ws01
+        $ git clone https://github.com/prosmc/miniobs.git
 
-        $ cd ~/miniobs-ws01/miniobs/miniobs-002
-        $ docker-compose up
+02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-2. Use Kibana for further actions
+        $ cd miniobs
+        $ source ./.xrc
+        $ x_setup
+
+    **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
+    due to the modifications of the kernel parameter.
+
+03. a) Choose the use cases miniobs-005 and generate the ssl-certificate which is needed for running\
+   Kibana in a secure mode so that the 'Alerting' can be enabled.
+
+        $ cd ~/miniobs/miniobs-005
+
+    b) After the ssl-cert & ssl-key is generated you can start the elastic stack
+
+        $ docker-compose up -d 
+
+    **NOTE:** instead of running the commands in 3a & 3b step-by-step you can source the .xrc 
+    file for running the function x_setup
+
+        $ . ./.xrc
+        $ x_setup
+
+04. Use Kibana for further actions
 
         Login Credentials:
+
         User: elastic
         Password: changeme
 
-        http://`<myhost>`:5601/
+        http://localhost:5601/
 
-        Note: 'myhost' is your flt* host.
+    ![Kibana Landing Page](resources/assets/images/miniobs-010_pict-01.png)
 
-3. Use Elasticsearch from Remote
+05. Use Elasticsearch from Remote
 
         curl -u elastic:changeme -XGET http://`<myhost>`:9200
 
-4. Stop miniobs-002
+Stop and Start the elastic stack
+---
+
+06. Stop the docker containers
 
         $ docker-compose stop
 
-5. Start the miniobs-002 stack
+07. Start the docker containers
 
-        $ docker-compose start
+        $ docker-compose start 
 
-6. Remove the entire miniobs-002 stack
+Remove the entire stack
+---
+
+07. Remove the docker containers
 
         $ docker-compose down -v
+
+    **NOTE:** when you run 'docker-compose down -v' you'll loose all your data too.
 
 Contributing
 ---

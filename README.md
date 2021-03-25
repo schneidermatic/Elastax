@@ -26,8 +26,6 @@ Name           | Reference
 ubuntu         | >= 18.04.5 LTS (Bionic Beaver)
 docker         | [https://docs.docker.com/engine/reference/run/](https://docs.docker.com/engine/reference/run/)
 docker-compose | [https://docs.docker.com/compose/reference/overview/](https://docs.docker.com/compose/reference/overview/)
-ansible        | >= 2.8.1
-python         | >= 3.7.4
 
 ###### REPOSITORY CONTENT
 ---
@@ -115,7 +113,7 @@ SETUP
 3. Choose one of the miniobs use cases (i.e. miniobs-005) and take a look at the specific README\
    for each project for further information.
 
-        $ cd ~/miniobs/miniobs-005
+        $ cd ~/miniobs/miniobs-010
         $ docker-compose up
 
    **NOTE:** For some recipes it is not sufficent to run the 'docker-compose' command. As mentioned\
@@ -127,6 +125,8 @@ SETUP
 
         user: elastic
         password: changeme
+
+   ![Kibana Login](resources/assets/images/miniobs-005_pict-01.png)
 
 5. Stop the docker containers
 

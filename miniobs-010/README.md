@@ -4,7 +4,7 @@ This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kiba
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...).
 
 This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
-if you like the project.\ Thank you in advance!
+if you like the project. Thank you in advance!
 
 ###### PREREQUISITES
 ---

@@ -28,7 +28,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
     volumes:
-      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ~/miniobs/miniobs-020/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data01:/usr/share/elasticsearch/data
     ulimits:
@@ -70,7 +70,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
     volumes:
-      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ~/miniobs/miniobs-020/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data02:/usr/share/elasticsearch/data
     ulimits:
@@ -112,7 +112,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
     volumes:
-      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ~/miniobs/miniobs-020/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data03:/usr/share/elasticsearch/data
     ulimits:

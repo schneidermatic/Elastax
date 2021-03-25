@@ -23,6 +23,7 @@ For running the miniobs-recipes(s) you need the following software components on
 
 Name           | Reference    
 -------------- | --------------- 
+ubuntu         | >= 18.04.5 LTS (Bionic Beaver)
 docker         | [https://docs.docker.com/engine/reference/run/](https://docs.docker.com/engine/reference/run/)
 docker-compose | [https://docs.docker.com/compose/reference/overview/](https://docs.docker.com/compose/reference/overview/)
 ansible        | >= 2.8.1
@@ -122,7 +123,7 @@ SETUP
 
 4. Use Kibana for further actions
 
-        http://<hostname>:5601
+        http://localhost:5601
 
         user: elastic
         password: changeme

@@ -28,11 +28,11 @@ CWD=$(pwd)
 ##----------------------------------------
 ## BASIC SETUP PROCEDURES
 ##----------------------------------------
-x_setup() {
+x_up() {
    docker-compose up
 }   
 
-x_destroy() {
+x_down() {
    docker-compose down -v
 }
 

@@ -28,12 +28,12 @@ CWD=$(pwd)
 ##----------------------------------------
 ## BASIC SETUP PROCEDURES
 ##----------------------------------------
-x_setup() {
+x_up() {
    docker-compose -f create-certs.yml run --rm create_certs && \
    docker-compose up
 }   
 
-x_remove() {
+x_down() {
    docker-compose down -v
 }
 

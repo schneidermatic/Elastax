@@ -48,7 +48,7 @@ SETUP
     file for running the function x_setup
 
         $ . ./.xrc
-        $ x_setup
+        $ x_up
 
 04. Use Kibana for further actions
 

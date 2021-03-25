@@ -2,6 +2,9 @@
 
 miniobs v7.12.0 contains various elastic stack use cases based on elastiv v7.12.0 for demo or learning purposes.
 
+This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+if you like the project.\ Thank you in advance!
+
 ###### ELASTIC STACK RELEASE NOTES
 ---
 Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-12-0-schema-on-read-frozen-tier-autoscaling](https://www.elastic.co/blog/whats-new-elastic-7-12-0-schema-on-read-frozen-tier-autoscaling) <br/>
@@ -126,7 +129,7 @@ SETUP
         user: elastic
         password: changeme
 
-   ![Kibana Login](resources/assets/images/miniobs-005_pict-01.png)
+   ![Kibana Login](miniobs-010/resources/assets/images/miniobs-010_pict-01.png)
 
 5. Stop the docker containers
 

@@ -3,7 +3,7 @@
 This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. miniobs-010 has the trial license 
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...).
 
-This is made with Herblut/2021 - so please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project.\ Thank you in advance!
 
 ###### PREREQUISITES
@@ -59,7 +59,7 @@ SETUP
 
         http://localhost:5601/
 
-    ![Kibana Landing Page](resources/assets/images/miniobs-010_pict-01.png)
+    ![Kibana Login](resources/assets/images/miniobs-010_pict-01.png)
 
 05. Use Elasticsearch from Remote
 

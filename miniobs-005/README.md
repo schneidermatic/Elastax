@@ -3,7 +3,7 @@
 This recipe contains a very simple stack consisting of 1x elasticsearch and 1x kibana node. It's main purpose is to
 to get up and running without any effort and as quick as possible.
 
-This is made with Herblut/2021 - so please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project.\ Thank you in advance!
 
 ###### PREREQUISITES

@@ -35,8 +35,8 @@ SETUP
 
         $ docker-compose up -d 
 
-    **NOTE:** instead of running the commands in 3 a & 3 b step-by-step you can source the .envrc 
-    file for running the function x_inst
+    **NOTE:** instead of running the commands in 3a & 3b step-by-step you can source the .xrc 
+    file for running the function x_setup
 
         $ . ./.xrc
         $ x_setup
@@ -48,7 +48,7 @@ SETUP
         user: elastic
         password: changeme
 
-   ![Kibana Login](resources/assets/images/miniobs-115_pict-01.png)
+   ![Kibana Login](resources/assets/images/miniobs-005_pict-01.png)
 
 
 Stop and Start the elastic stack

@@ -1,6 +1,6 @@
 # miniobs
 
-miniobs v7.12.0 contains various elastic stack use cases based on elastiv v7.12.0 for demo or learning purposes.
+miniobs v7.12.0 contains various elastic stack cookbook recipes based on elastiv v7.12.0 for demo or learning purposes only!
 
 This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
@@ -131,17 +131,25 @@ SETUP
 
    ![Kibana Login](miniobs-010/resources/assets/images/miniobs-010_pict-01.png)
 
-5. Stop the docker containers
+Stop and Start the elastic stack
+---
+
+05. Stop the docker containers
 
         $ docker-compose stop
 
-6. Start the docker containers
+06. Start the docker containers
 
-        $ docker-compose start  
+        $ docker-compose start 
 
-5. Remove the docker containers
+Remove the entire stack
+---
+
+07. Remove the docker containers
 
         $ docker-compose down -v
+
+    **NOTE:** when you run 'docker-compose down -v' you'll loose all your data too.
 
 CONTRIBUTING
 ---

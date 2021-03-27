@@ -1,8 +1,9 @@
 # miniobs
 
-miniobs v7.12.0 contains various elastic stack cookbook recipes based on elastiv v7.12.0 for demo or learning purposes only!
+miniobs v7.12.0 contains various elastic stack cookbook recipes based on elastiv v7.12.0.
+These projects were created for demo or learning purposes only!
 
-![Made with Herzblut](resources/assets/images/MadeWithHerzblut01.png)
+![Made with Herzblut](resources/assets/images/MadeWithHerzblut01.png) <br>
 Please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
 
@@ -130,7 +131,7 @@ SETUP
         user: elastic
         password: changeme
 
-   ![Kibana Login](miniobs-010/resources/assets/images/miniobs-010_pict-01.png)
+   ![Kibana Login](resources/assets/images/miniobs-010_pict-01.png)
 
 Stop and Start the elastic stack
 ---

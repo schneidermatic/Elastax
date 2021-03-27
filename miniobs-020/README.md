@@ -69,9 +69,9 @@ SETUP
 
 05. Use Elasticsearch from Remote
 
-    es01 - curl -u elastic:changeme -XGET http://localhost:9200\
-    es02 - curl -u elastic:changeme -XGET http://localhost:9201\
-    es03 - curl -u elastic:changeme -XGET http://localhost:9202\
+    es01 - curl -u elastic:changeme -XGET http://localhost:9200 <br>
+    es02 - curl -u elastic:changeme -XGET http://localhost:9201 <br>
+    es03 - curl -u elastic:changeme -XGET http://localhost:9202 <br>
 
 Turn on Monitoring
 --- 

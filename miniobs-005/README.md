@@ -37,20 +37,23 @@ SETUP
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
       
-03. a) Choose the use cases miniobs-005 and generate the ssl-certificate which is needed for running\
-   Kibana in a secure mode so that the 'Alerting' can be enabled.
+03. a) Go to the miniobs-005 folder
 
         $ cd ~/miniobs/miniobs-005
 
-    b) After the ssl-cert & ssl-key is generated you can start the elastic stack
+    b) Run the docker-compose command for starting the containers
 
-        $ docker-compose up -d 
+        $ docker-compose run -d
 
-    **NOTE:** instead of running the commands in 3a & 3b step-by-step you can source the .xrc 
-    file for running the function x_setup
+    **NOTE:** The '.xrc' file contains some short-hand functions for an easier handling. So you\
+    can run the 'x_up' command for starting the containers.
 
         $ . ./.xrc
         $ x_up
+
+    A list of all 'x_*' short-hand commands you can get by running ...
+
+        $ x_cmd
 
 04. Use Kibana
 

@@ -4,6 +4,8 @@ This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kiba
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
 default.
 
+![MINIOBS Basic Architecture](../resources/assets/images/miniobs-BasicArchitecture-01.png)
+
 This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
 
@@ -36,7 +38,7 @@ SETUP
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
 
-03. a) Go to the use cases miniobs-010
+03. a) Go to the miniobs-010 folder
 
         $ cd ~/miniobs/miniobs-010
 
@@ -44,10 +46,10 @@ SETUP
 
         $ docker-compose run -d
 
-    **NOTE:** instead of running the docker-compose command you can source the .xrc 
-    file for running the function x_up
+    **NOTE:** The '.xrc' file contains some short-hand functions for an easier handling. So you\
+    can run the 'x_up' command for starting the containers.
 
-        $ . ./.xrc
+        $ source ./.xrc
         $ x_up
 
     A list of all 'x_*' short-hand commands you can get by running ...

@@ -2,7 +2,7 @@
 
 miniobs v7.12.0 contains various elastic stack cookbook recipes based on elastiv v7.12.0 for demo or learning purposes only!
 
-This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+![Made with Herzblut](../resources/assets/images/MadeWithHerzblut01.png)\ Please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
 
 ###### ELASTIC STACK RELEASE NOTES

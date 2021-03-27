@@ -6,8 +6,10 @@ default. The main purpose of this cookbook recipe is to get familiar with a muli
 
 ![MINIOBS Extented Architecture](../resources/assets/images/miniobs-ExtendedArchitecture-01.png)
 
-This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+Please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
+
+![Made with Herzblut](../resources/assets/images/MadeWithHerzblut01.png) <br>
 
 ###### PREREQUISITES
 ---

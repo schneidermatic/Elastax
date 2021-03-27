@@ -1,8 +1,8 @@
 # miniobs-015 / Basic Architecture
 
-This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. miniobs-010 has the trial license 
+This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. miniobs-015 has the trial license 
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
-default.
+default. In addition ssl encryption is activated for Kibana so that the 'Alerting' feature is also enabled.
 
 ![MINIOBS Basic Architecture](../resources/assets/images/miniobs-BasicArchitecture-01.png)
 
@@ -70,7 +70,7 @@ SETUP
 
         https://localhost:5601/
 
-    ![Kibana Login](resources/assets/images/miniobs-010_pict-01.png)
+    ![Kibana Login](resources/assets/images/miniobs-015_pict-01.png)
 
 05. Use Elasticsearch from Remote
 

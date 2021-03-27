@@ -69,7 +69,7 @@ SETUP
 
 05. Use Elasticsearch from Remote
 
-        curl -u elastic:changeme -XGET http://`<myhost>`:9200
+        curl -u elastic:changeme -XGET http://localhost:9200
 
 Stop and Start the elastic stack
 ---

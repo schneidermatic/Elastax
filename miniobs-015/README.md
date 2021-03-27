@@ -4,6 +4,8 @@ This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kiba
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
 default.
 
+![MINIOBS Basic Architecture](../resources/assets/images/miniobs-BasicArchitecture-01.png)
+
 This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
 
@@ -49,13 +51,13 @@ SETUP
 
         $ docker-compose up -d 
 
-    **NOTE:** instead of running the commands in 3b and 3c step-by-step you can source recipe specific
-    '.xrc' file for running the function x_up
+    **NOTE:** The '.xrc' file contains some short-hand functions for an easier handling. So you\
+    can run the 'x_up' command for starting the containers.
 
-        $ . ./.xrc
+        $ source ./.xrc
         $ x_up
 
-    A list of all 'x_*' short-hand commands you can get by running the following command
+    A list of all 'x_*' short-hand commands you can get by running ...
 
         $ x_cmd
 
@@ -66,13 +68,13 @@ SETUP
         User: elastic
         Password: changeme
 
-        http://localhost:5601/
+        https://localhost:5601/
 
     ![Kibana Login](resources/assets/images/miniobs-010_pict-01.png)
 
 05. Use Elasticsearch from Remote
 
-        curl -u elastic:changeme -XGET http://`<myhost>`:9200
+        curl -u elastic:changeme -k -XGET https://localhost:9200
 
 Stop and Start the elastic stack
 ---

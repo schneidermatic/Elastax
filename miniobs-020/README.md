@@ -4,7 +4,7 @@ This recipe contains an elastic stack consisting of 3x elasticsearch and 1x kiba
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
 default. The main purpose of this cookbook recipe is to get familiar with a mulit-node cluster.
 
-![MINIOBS Extented Architecture](../resources/assets/images/miniobs-ExtendedArchitecture-02.png)
+![MINIOBS Extented Architecture](../resources/assets/images/miniobs-ExtendedArchitecture-01.png)
 
 This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
@@ -82,9 +82,9 @@ Turn on Monitoring
 
 07. Turn on Monitoring
 
-     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-02.png)
+     **NOTE:** Choose the option 'Or, set up with self monitoring'
 
-     **NOTE:** Choose the option 'Or, setup with self monitoring'
+     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-02.png)
 
      ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-03.png)
 

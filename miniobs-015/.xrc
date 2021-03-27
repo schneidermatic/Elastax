@@ -30,7 +30,7 @@ CWD=$(pwd)
 ##----------------------------------------
 x_up() {
    docker-compose -f create-certs.yml run --rm create_certs && \
-   docker-compose up
+   docker-compose up -d
 }   
 
 x_down() {

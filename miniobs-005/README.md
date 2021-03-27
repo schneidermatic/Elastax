@@ -1,7 +1,9 @@
-# miniobs-005 Kickstarter
+# miniobs-005 / Basic Architecture
 
 This recipe contains a very simple stack consisting of 1x elasticsearch and 1x kibana node. It's main purpose is to
 to get up and running without any effort and as quick as possible.
+
+![MINIOBS Basic Architecture](../resources/assets/images/miniobs-BasicArchitecture-01.png)
 
 This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!

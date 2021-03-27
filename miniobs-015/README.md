@@ -1,4 +1,4 @@
-# miniobs-010 / Basic Architecture
+# miniobs-015 / Basic Architecture
 
 This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. miniobs-010 has the trial license 
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
@@ -36,21 +36,26 @@ SETUP
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
 
-03. a) Go to the use cases miniobs-010
+03. a) Choose the use cases miniobs-015 and generate the ssl-certificate which is needed for running\
+   Kibana in a secure mode so that the 'Alerting' can be enabled.
 
-        $ cd ~/miniobs/miniobs-010
+        $ cd ~/miniobs/miniobs-015
+ 
+    b) Generate the ssl-cert & ssl-key 
 
-    b) Run the docker-compose command for starting the containers
+        $ docker-compose -f create-certs.yml run --rm create_certs
 
-        $ docker-compose run -d
+    c) Start the containers by running the docker-compose command
 
-    **NOTE:** instead of running the docker-compose command you can source the .xrc 
-    file for running the function x_up
+        $ docker-compose up -d 
+
+    **NOTE:** instead of running the commands in 3b and 3c step-by-step you can source recipe specific
+    '.xrc' file for running the function x_up
 
         $ . ./.xrc
         $ x_up
 
-    A list of all 'x_*' short-hand commands you can get by running ...
+    A list of all 'x_*' short-hand commands you can get by running the following command
 
         $ x_cmd
 

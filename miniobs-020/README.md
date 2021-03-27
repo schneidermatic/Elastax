@@ -1,10 +1,10 @@
-# miniobs-015 / Basic Architecture
+# miniobs-020 / Extended Architecture
 
-This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. miniobs-015 has the trial license 
+This recipe contains an elastic stack consisting of 3x elasticsearch and 1x kibana node. miniobs-020 has the trial license 
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
-default. In addition ssl encryption is activated for Kibana so that the 'Alerting' feature is also enabled.
+default. The main purpose of this cookbook recipe is to get familiar with a mulit-node cluster.
 
-![MINIOBS Basic Architecture](../resources/assets/images/miniobs-BasicArchitecture-01.png)
+![MINIOBS Extented Architecture](../resources/assets/images/miniobs-ExtendedArchitecture-02.png)
 
 This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!
@@ -38,18 +38,13 @@ SETUP
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
 
-03. a) Choose the use cases miniobs-015 and generate the ssl-certificate which is needed for running\
-   Kibana in a secure mode so that the 'Alerting' can be enabled.
+03. a) Go to the miniobs-20 folder
 
-        $ cd ~/miniobs/miniobs-015
- 
-    b) Generate the ssl-cert & ssl-key 
+        $ cd ~/miniobs/miniobs-020
 
-        $ docker-compose -f create-certs.yml run --rm create_certs
+    b) Run the docker-compose command for starting the containers
 
-    c) Start the containers by running the docker-compose command
-
-        $ docker-compose up -d 
+        $ docker-compose run -d
 
     **NOTE:** The '.xrc' file contains some short-hand functions for an easier handling. So you\
     can run the 'x_up' command for starting the containers.
@@ -70,27 +65,50 @@ SETUP
 
         https://localhost:5601/
 
-    ![Kibana Login](../resources/assets/images/miniobs-015_pict-01.png)
+    ![Kibana Login](../resources/assets/images/miniobs-010_pict-01.png)
 
 05. Use Elasticsearch from Remote
 
-        curl -u elastic:changeme -k -XGET https://localhost:9200
+    es01 - curl -u elastic:changeme -XGET http://localhost:9200
+    es02 - curl -u elastic:changeme -XGET http://localhost:9201
+    es03 - curl -u elastic:changeme -XGET http://localhost:9202
 
+Turn on Monitoring
+--- 
+
+06. Go to the section  "Management > Stack Monitoring" in the Drop Down Menu
+
+     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-01.png)
+
+07. Turn on Monitoring
+
+     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-02.png)
+
+     **NOTE:** Choose the option 'Or, setup with self monitoring'
+
+     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-03.png)
+
+08. Cluster Overview
+    
+    ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-04.png)
+
+    ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-05.png)
+  
 Stop and Start the elastic stack
 ---
 
-06. Stop the docker containers
+09. Stop the docker containers
 
         $ docker-compose stop
 
-07. Start the docker containers
+10. Start the docker containers
 
         $ docker-compose start 
 
 Remove the entire stack
 ---
 
-07. Remove the docker containers
+11. Remove the docker containers
 
         $ docker-compose down -v
 

@@ -59,7 +59,7 @@ SETUP
 
         http://localhost:5601
 
-   ![Kibana Landing Page](resources/assets/images/miniobs-005_pict-01.png)
+   ![Kibana Landing Page](../resources/assets/images/miniobs-005_pict-01.png)
 
 
 Stop and Start the elastic stack

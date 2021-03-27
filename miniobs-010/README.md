@@ -65,7 +65,7 @@ SETUP
 
         http://localhost:5601/
 
-    ![Kibana Login](resources/assets/images/miniobs-010_pict-01.png)
+    ![Kibana Login](../resources/assets/images/miniobs-010_pict-01.png)
 
 05. Use Elasticsearch from Remote
 

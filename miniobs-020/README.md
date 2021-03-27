@@ -1,7 +1,7 @@
 # miniobs-020 / Extended Architecture
 
-This recipe contains an elastic stack consisting of 3x elasticsearch and 1x kibana node. miniobs-020 has the trial license 
-and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
+This recipe contains an elastic stack consisting of 3x elasticsearch and 1x kibana node(s). miniobs-020 has the trial license 
+and the basic security features enabled. So all license based features (Machine Learning, Watcher etc ...) are activated by
 default. The main purpose of this cookbook recipe is to get familiar with a mulit-node cluster.
 
 ![MINIOBS Extented Architecture](../resources/assets/images/miniobs-ExtendedArchitecture-01.png)
@@ -69,11 +69,11 @@ SETUP
 
     ![Kibana Login](../resources/assets/images/miniobs-010_pict-01.png)
 
-05. Use Elasticsearch from Remote
+05. Use the Elasticsearch REST-API via curl
 
-    es01 - curl -u elastic:changeme -XGET http://localhost:9200 <br>
-    es02 - curl -u elastic:changeme -XGET http://localhost:9201 <br>
-    es03 - curl -u elastic:changeme -XGET http://localhost:9202 <br>
+    es01: $ curl -u elastic:changeme -XGET http://localhost:9200 <br>
+    es02: $ curl -u elastic:changeme -XGET http://localhost:9201 <br>
+    es03: $ curl -u elastic:changeme -XGET http://localhost:9202 <br>
 
 Turn on Monitoring
 --- 

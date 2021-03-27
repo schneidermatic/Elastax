@@ -69,9 +69,9 @@ SETUP
 
     ![Kibana Login](../resources/assets/images/miniobs-010_pict-01.png)
 
-05. Use Elasticsearch from Remote
+05. Use the Elasticsearch REST-API via curl
 
-        curl -u elastic:changeme -XGET http://localhost:9200
+        $ curl -u elastic:changeme -XGET http://localhost:9200
 
 Stop and Start the elastic stack
 ---

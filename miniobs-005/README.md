@@ -62,6 +62,11 @@ SETUP
    ![Kibana Landing Page](../resources/assets/images/miniobs-005_pict-01.png)
 
 
+05. Use the Elasticsearch REST-API via curl
+
+       $ curl -XGET https://localhost:9200
+
+
 Stop and Start the elastic stack
 ---
 

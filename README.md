@@ -115,7 +115,7 @@ SETUP
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
       
-3. Choose one of the miniobs use cases (i.e. miniobs-005) and take a look at the specific README\
+3. Choose one of the miniobs use cases (i.e. miniobs-010) and take a look at the specific README\
    for each project for further information.
 
         $ cd ~/miniobs/miniobs-010

@@ -1,7 +1,7 @@
 # miniobs-020 / Extended Architecture
 
 This recipe contains an elastic stack consisting of 3x elasticsearch and 1x kibana node(s). miniobs-020 has the trial license 
-and the basic security features enabled. So all license based features (Machine Learning, Watcher etc ...) are activated by
+and the basic security features enabled. So all license based features (Machine Learning, Watcher etc ...) are accessible by
 default. The main purpose of this cookbook recipe is to get familiar with a mulit-node cluster.
 
 ![MINIOBS Extented Architecture](../resources/assets/images/miniobs-ExtendedArchitecture-01.png)

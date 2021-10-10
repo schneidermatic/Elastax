@@ -1,38 +1,45 @@
 # CHANGELOG
 
-## miniobs-7.12.0/2020-03-24/schneidermatic
+## miniobs-7.15.0/2021/schneidermatic
+### ADDED:
+- Branch/Release miniobs-7.15.0 was added.
 
 ### ADDED:
 - Branch/Release miniobs-7.12.0 was added.
 
-## miniobs-7.11.2/2020-03-21/schneidermatic
+## miniobs-7.12.0/2021-03-24/schneidermatic
+
+### ADDED:
+- Branch/Release miniobs-7.12.0 was added.
+
+## miniobs-7.11.2/2021-03-21/schneidermatic
 
 ### CHANGES:
 - Added recipe 'miniobs-025'
 - Updated recipe 'miniobs-015'
 - Changed '.envrc' to '.xrc' file
 
-## miniobs-7.11.2/2020-03-20/schneidermatic
+## miniobs-7.11.2/2021-03-20/schneidermatic
 
 ### ADDED:
 - Branch miniobs-7.11.2 was added.
 
-## miniobs-7.11.1/2020-03-20/schneidermatic
+## miniobs-7.11.1/2021-03-20/schneidermatic
 
 ### ADDED:
 - Branch miniobs-7.11.1 was added.
 
-## miniobs-7.11.0/2020-03-20/schneidermatic
+## miniobs-7.11.0/2021-03-20/schneidermatic
 
 ### ADDED:
 - Branch miniobs-7.11.0 was added.
 
-## miniobs-7.10.2/2020-03-20/schneidermatic
+## miniobs-7.10.2/2021-03-20/schneidermatic
 
 ### ADDED:
 - Branch miniobs-7.10.2 was added.
 
-## miniobs-7.10.1/2020-03-20/schneidermatic
+## miniobs-7.10.1/2021-03-20/schneidermatic
 
 ### ADDED:
 - Branch miniobs-7.10.1 was added.

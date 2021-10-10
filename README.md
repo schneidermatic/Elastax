@@ -1,6 +1,6 @@
 # miniobs
 
-miniobs v7.12.0 contains various elastic stack cookbook recipes based on elastiv v7.12.0.
+miniobs v7.15.0 contains various elastic stack cookbook recipes based on elastic v7.15.0.
 These projects were created for demo or learning purposes only!
 
 ![Made with Herzblut](resources/assets/images/MadeWithHerzblut01.png) <br>
@@ -9,17 +9,21 @@ if you like the project. Thank you in advance!
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-12-0-schema-on-read-frozen-tier-autoscaling](https://www.elastic.co/blog/whats-new-elastic-7-12-0-schema-on-read-frozen-tier-autoscaling) <br/>
+Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-15-0](https://www.elastic.co/blog/whats-new-elastic-7-15-0) <br/>
 
 
 Elastic Stack <br/>
-Elasticsearch: [https://www.elastic.co/blog/whats-new-elasticsearch-7-12-0-put-a-search-box-on-s3](https://www.elastic.co/blog/whats-new-elasticsearch-7-12-0-put-a-search-box-on-s3) <br/>
-Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-12-0-manage-long-running-searches-in-background](https://www.elastic.co/blog/whats-new-kibana-7-12-0-manage-long-running-searches-in-background) <br/>
+Elasticsearch: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-15-0](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-15-0) <br/>
+Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-15-0](https://www.elastic.co/blog/whats-new-kibana-7-15-0) <br/>
+
+Elastic Cloud <br/>
+Elastic Cloud Enterprise: [https://www.elastic.co/blog/whats-new-elastic-cloud-7-15-0](https://www.elastic.co/blog/whats-new-elastic-cloud-7-15-0)<br/>
 
 Elastic Solutions <br/>
-Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-12-0-web-crawler-updates-optimized-performance](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-12-0-web-crawler-updates-optimized-performance) <br/>
-Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-12-0-apm-correlations-opentelemetry-native-support](https://www.elastic.co/blog/whats-new-elastic-observability-7-12-0-apm-correlations-opentelemetry-native-support) <br/>
-Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-12-0-analyst-driven-correlation-ransomware-prevention](https://www.elastic.co/blog/whats-new-elastic-security-7-12-0-analyst-driven-correlation-ransomware-prevention) <br/>
+Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0) <br/>
+Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0](https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0) <br/>
+Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-15-0](https://www.elastic.co/blog/whats-new-elastic-security-7-15-0) <br/>
+
 
 
 ###### PREREQUISITES
@@ -112,8 +116,8 @@ SETUP
         $ source ./.xrc
         $ x_setup
 
-    **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
-    due to the modifications of the kernel parameter.
+    **NOTE:** x_setup modifies Linux Kernel parameters and reboots your host system after 30 seconds\
+    due to the modifications of the kernel parameters.
       
 3. Choose one of the miniobs use cases (i.e. miniobs-010) and take a look at the specific README\
    for each project for further information.

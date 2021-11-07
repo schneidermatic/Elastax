@@ -1,6 +1,6 @@
 # elastic-stack
 
-elastic-stack v7.15.0 contains various elastic stack cookbook recipes based on elastic v7.15.0.
+elastic-stack v7.15.1 contains various elastic stack cookbook recipes based on elastic v7.15.1
 These projects were created for demo or learning purposes only!
 
 ![Made with Herzblut](resources/assets/images/MadeWithHerzblut01.png) <br>

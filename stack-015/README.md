@@ -4,7 +4,7 @@ This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kiba
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
 default. In addition ssl encryption is activated for Kibana so that the 'Alerting' feature is also enabled.
 
-![MINIOBS Basic Architecture](../resources/assets/images/miniobs-BasicArchitecture-01.png)
+![Elastic Stack Basic Architecture](../resources/assets/images/BasicArchitecture-01.png)
 
 Please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
 if you like the project. Thank you in advance!

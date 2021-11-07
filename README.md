@@ -59,6 +59,7 @@ stack-010    | 1x es/1x kb                  | 1x Node cluster with extended conf
 stack-015    | 1x es/1x kb                  | 1x Node cluster with extended config, extended security (ssl) and license features
 stack-020    | 3x es/1x kb                  | 3x Node cluster with extended config, basic security and license features
 stack-025    | 5x es/1x kb                  | 5x Node cluster with extended config, basic security and license features
+stack-030    | 1x es/1x kb/1x ml            | 1x Node cluster with ml activated, extended security (ssl) and license features
 
 
 ###### LOGSTASH: stack-100 - stack-200

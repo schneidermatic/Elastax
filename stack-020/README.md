@@ -27,13 +27,13 @@ SETUP
 01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir stack-ws01
-        $ cd stack-ws01
-        $ git clone https://github.com/prosmc/stack.git
+        $ mkdir elastic-stack-ws01
+        $ cd elastic-stack-ws01
+        $ git clone https://github.com/prosmc/elastic-stack.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-        $ cd stack
+        $ cd elastic-stack
         $ source ./.xrc
         $ x_setup
 
@@ -42,7 +42,7 @@ SETUP
 
 03. a) Go to the stack-20 folder
 
-        $ cd ~/stack/stack-020
+        $ cd ~/elastic-stack/stack-020
 
     b) Run the docker-compose command for starting the containers
 
@@ -80,21 +80,21 @@ Turn on Monitoring
 
 06. Go to the section  "Management > Stack Monitoring" in the Drop Down Menu
 
-     ![Stack Monitoring](../resources/assets/images/stack-020_pict-01.png)
+     ![Elastic Stack Monitoring](../resources/assets/images/stack-020_pict-01.png)
 
 07. Turn on Monitoring
 
      **NOTE:** Choose the option 'Or, set up with self monitoring'
 
-     ![Stack Monitoring](../resources/assets/images/stack-020_pict-02.png)
+     ![Elastic Stack Monitoring](../resources/assets/images/stack-020_pict-02.png)
 
-     ![Stack Monitoring](../resources/assets/images/stack-020_pict-03.png)
+     ![Elastic Stack Monitoring](../resources/assets/images/stack-020_pict-03.png)
 
 08. Cluster Overview
     
-    ![Stack Monitoring](../resources/assets/images/stack-020_pict-04.png)
+    ![Elastic Stack Monitoring](../resources/assets/images/stack-020_pict-04.png)
 
-    ![Stack Monitoring](../resources/assets/images/stack-020_pict-05.png)
+    ![Elastic Stack Monitoring](../resources/assets/images/stack-020_pict-05.png)
   
 Stop and Start the elastic stack
 ---

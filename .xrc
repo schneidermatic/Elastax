@@ -16,7 +16,7 @@
 
 
 #==============================================================================
-# SCRIPT:       .envrc
+# SCRIPT:       .xrc
 # AUTOHR:       Markus Schneider
 # CONTRIBUTERS: Markus Schneider,<YOU>
 # DATE:         2020-01-22
@@ -27,6 +27,7 @@
 
 export PROJECT_HOME=$(pwd)
 export PROJECT_NAME="elastic-stack"
+export NEW_RELEASE='ELASTIC_RELEASE=7.15.1'
 
 PATH=$PROJECT_HOME/resources:$PATH
 
@@ -34,4 +35,5 @@ PATH=$PROJECT_HOME/resources:$PATH
 alias cmd="alias | grep 'x_'"
 
 ## INSTALL/UNINSTALL COMMANDS
-alias x_setup="$PROJECT_HOME/resources/setup.sh"
+alias x_setup="$PROJECT_HOME/resources/setup/setup.sh"
+alias x_nextrel="$PROJECT_HOME/resources/scripts/nextrel.sh"

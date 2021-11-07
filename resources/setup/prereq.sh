@@ -16,13 +16,13 @@
 #******************************************************************************/
 
 #==============================================================================
-# SCRIPT:       set-prereq.sh
+# SCRIPT:       prereq.sh
 # AUTOHR:       Markus Schneider
 # CONTRIBUTERS: Markus Schneider,<YOU>
-# DATE:         2020-01-22
-# REV:          0.1.0
+# DATE:         2021-10-07
+# REV:          0.1.1
 # PLATFORM:     Noarch
-# PURPOSE:      set-prereq the MINIOBS environment
+# PURPOSE:      set-prereq the elastic-stack environment
 #==============================================================================
 
 ##----------------------------------------

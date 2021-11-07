@@ -16,37 +16,29 @@
 #******************************************************************************/
 
 #==============================================================================
-# SCRIPT:       setup.sh
+# SCRIPT:       nextrel.sh
 # AUTOHR:       Markus Schneider
 # CONTRIBUTERS: Markus Schneider,<YOU>
 # DATE:         2021-10-07
 # REV:          0.1.1
 # PLATFORM:     Noarch
-# PURPOSE:      setup the elastic-stack environment
+# PURPOSE:      define new elastic release in '.env' file
 #==============================================================================
-SLEEP_TIME=30
 
 ##----------------------------------------
 ## SETUP FUNCTIONS
 ##----------------------------------------
-run_setup() {
-    sudo chown root:root $PROJECT_HOME/stack-205/config/mb01/metricbeat.yml
-    sudo $PROJECT_HOME/resources/setup/prereq.sh && \
-    echo "" && \
-    echo "" && \
-    echo "########################################" && \
-    echo "# System is rebooting in 30 seconds!!! #" && \
-    echo "########################################" && \
-    echo "" && \
-    sleep $SLEEP_TIME && \
-    sudo reboot
+nextrel() {
+    for file in $(find $PROJECT_HOME -name '.env'); do
+      grep -rl ELASTIC_RELEASE $file | xargs sed -i "s/ELASTIC_RELEASE=.*/$NEW_RELEASE/g"
+    done
 }
 
 ##----------------------------------------
 ## MAIN
 ##----------------------------------------
 run_main() {
-   run_setup
+   nextrel
 }
 
 run_main "$@"

@@ -1,16 +1,16 @@
-# miniobs-005 / Basic Architecture
+# stack-005 / Basic Architecture
 
 This recipe contains a very simple stack consisting of 1x elasticsearch and 1x kibana node. It's main purpose is to
 to get up and running without any effort and as quick as possible.
 
-![MINIOBS Basic Architecture](../resources/assets/images/miniobs-BasicArchitecture-01.png)
+![Elastic Stack Basic Architecture](../resources/assets/images/BasicArchitecture-01.png)
 
-This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/stack/stargazers)
 if you like the project. Thank you in advance!
 
 ###### PREREQUISITES
 ---
-For running the miniobs-recipes(s) you need the following software components on your host system
+For running the stack-recipes(s) you need the following software components on your host system
 
 Name           | Reference    
 -------------- | --------------- 
@@ -21,25 +21,25 @@ docker-compose | [https://docs.docker.com/compose/reference/overview/](https://d
 SETUP
 ---
 
-01. Clone the miniobs repo ( => if it's already done - skip this point!)
+01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir miniobs-ws01
-        $ cd miniobs-ws01
-        $ git clone https://github.com/prosmc/miniobs.git
+        $ mkdir elastic-stack-ws01
+        $ cd elastic-stack-ws01
+        $ git clone https://github.com/prosmc/elastic-stack.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-        $ cd miniobs
+        $ cd elastic-stack
         $ source ./.xrc
         $ x_setup
 
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
       
-03. a) Go to the miniobs-005 folder
+03. a) Go to the stack-005 folder
 
-        $ cd ~/miniobs/miniobs-005
+        $ cd ~/elastic-stack-ws01/elastic-stack/stack-005
 
     b) Run the docker-compose command for starting the containers
 
@@ -59,7 +59,7 @@ SETUP
 
         http://localhost:5601
 
-   ![Kibana Landing Page](../resources/assets/images/miniobs-005_pict-01.png)
+   ![Kibana Landing Page](../resources/assets/images/stack-005_pict-01.png)
 
 
 05. Use the Elasticsearch REST-API via curl

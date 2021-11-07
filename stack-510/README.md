@@ -1,10 +1,10 @@
-# miniobs
+# stack-510
 
-miniobs is the entire elastic stack based on docker-compose. miniobs is inspired by the idea of elastic-stack-docker (https://github.com/elastic/stack-docker.git).
+stack-510 is the entire elastic stack based on docker-compose. 
 
 PREREQUISITES
 ---
-For running the miniobs stack you need the following software components on your host system
+For running the elastic-stack you need the following software components on your host system
 
 Name           | Reference    
 -------------- | --------------- 
@@ -12,37 +12,37 @@ docker         | [https://docs.docker.com/engine/reference/run/](https://docs.do
 docker-compose | [https://docs.docker.com/compose/reference/overview/](https://docs.docker.com/compose/reference/overview/)
 
 **IMPORTANT NOTE** <br>
-Before you can run miniobs successfully you have to change your system settings as it is described here:
+Before you can run stack-510 successfully you have to change your system settings as it is described here:
 [https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html)
 
 For Ubuntu 18.04.x LTS (Bionic Beaver) there is a script ('./scripts/setup-prerequisites.sh') for modifying the system settings.
 
         $ sudo ./scripts/setup-prerequisites.sh
 
-miniobs Stack Components
+stack-510 Components
 ---
-Component Name | Version         | Reference
--------------- | --------------- | --------------- 
-elasticsearch  | 7.6.x           | [https://www.elastic.co/guide/en/elasticsearch/reference/7.6/index.html](https://www.elastic.co/guide/en/elasticsearch/reference/7.6/index.html)
-kibana         | 7.6.x           | [https://www.elastic.co/guide/en/kibana/7.6/index.html](https://www.elastic.co/guide/en/kibana/7.6/index.html)
-logstash       | 7.6.x           | [https://www.elastic.co/guide/en/logstash/7.6/index.html](https://www.elastic.co/guide/en/logstash/7.6/index.html)
-auditbeat      | 7.6.x           | [https://www.elastic.co/guide/en/beats/auditbeat/7.6/index.html](https://www.elastic.co/guide/en/beats/auditbeat/7.6/index.html)
-filebeat       | 7.6.x           | [https://www.elastic.co/guide/en/beats/filebeat/7.6/index.html](https://www.elastic.co/guide/en/beats/filebeat/7.6/index.html)
-heartbeat      | 7.6.x           | [https://www.elastic.co/guide/en/beats/heartbeat/7.6/index.html](https://www.elastic.co/guide/en/beats/heartbeat/7.6/index.html)
-journalbeat    | 7.6.x           | [https://www.elastic.co/guide/en/beats/journalbeat/7.6/index.html](https://www.elastic.co/guide/en/beats/journalbeat/7.6/index.html)
-metricbeat     | 7.6.x           | [https://www.elastic.co/guide/en/beats/metricbeat/7.6/index.html](https://www.elastic.co/guide/en/beats/metricbeat/7.6/index.html)
-packetbeat     | 7.6.x           | [https://www.elastic.co/guide/en/beats/packetbeat/7.6/index.html](https://www.elastic.co/guide/en/beats/packetbeat/7.6/index.html)
-apm-server     | 7.6.x           | [https://www.elastic.co/guide/en/beats/apm-server/7.6/index.html](https://www.elastic.co/guide/en/beats/apm-server/7.6/index.html)
+Component Name | Version         
+-------------- | --------------
+elasticsearch  | 7.15.0         
+kibana         | 7.15.0         
+logstash       | 7.15.0         
+auditbeat      | 7.15.0           
+filebeat       | 7.15.0          
+heartbeat      | 7.15.0           
+journalbeat    | 7.15.0          
+metricbeat     | 7.15.0           
+packetbeat     | 7.15.0           
+apm-server     | 7.15.0           
 
 Installation
 ---
-miniobs is based on docker-compose. The following brief description shows how you can run miniobs:
+elastic-stack is based on docker-compose. The following brief description shows how you can run elastic:
 
-        $ cd ~
-        $ git clone https://github.com/prosmc/miniobs.git
-        $ cd miniobs
-        $ git checkout <branch> # 'master' or i. e. 'miniobs-7.6.1'
-        $ . ./.envrc
+        $ mkdir ~/elastic-stack-ws01
+        $ cd ./elastic-stack-ws01
+        $ git clone https://github.com/prosmc/elastic-stack.git
+        $ cd elastic-stack
+        $ . ./.xrc
         $ x_inst
 
 After a successfull installation the kibana console should be available under ...
@@ -56,11 +56,11 @@ Password: changeme <br>
 
 Show all commands
 ---
-You can list the commands which are provided by miniobs with ...
+You can list the commands which are provided by elastic-stack with ...
 
        $ cmd
 
-miniobs command overview
+.xrc command overview
 ---
 Command        | Description
 -------------- | ---------------------------------

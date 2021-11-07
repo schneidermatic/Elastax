@@ -1,10 +1,10 @@
-# miniobs
+# elastic-stack
 
-miniobs v7.15.0 contains various elastic stack cookbook recipes based on elastic v7.15.0.
+elastic-stack v7.15.0 contains various elastic stack cookbook recipes based on elastic v7.15.0.
 These projects were created for demo or learning purposes only!
 
 ![Made with Herzblut](resources/assets/images/MadeWithHerzblut01.png) <br>
-Please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+Please give us a [GitHub Star](https://github.com/prosmc/elastic-stack/stargazers)
 if you like the project. Thank you in advance!
 
 ###### ELASTIC STACK RELEASE NOTES
@@ -28,7 +28,7 @@ Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-15-0
 
 ###### PREREQUISITES
 ---
-For running the miniobs-recipes(s) you need the following software components on your host system
+For running the elastic-stack-recipes(s) you need the following software components on your host system
 
 Name           | Reference    
 -------------- | --------------- 
@@ -41,88 +41,88 @@ docker-compose | [https://docs.docker.com/compose/reference/overview/](https://d
 
 Recipe Categories         | Main Focus             | Components
 --------------------------|------------------------|-----------------------------------------------------------------------
-miniobs-000 - miniobs-100 | Elasticsearch Cluster  | Elasticsearch, Kibana
-miniobs-100 - miniobs-200 | Logstash               | Elasticsearch, Kibana, Logstash
-miniobs-200 - miniobs-300 | Beats                  | Elasticsearch, Kibana, Logstash, Beats
-miniobs-300 - miniobs-400 | APM/Tracing            | Elasticsearch, Kibana, APM, OpsBeans
-miniobs-400 - miniobs-500 | Machine Learning       | Elasticsearch, Kibana, Beats, Machine Learning
-miniobs-500 - miniobs-600 | Full Stack             | Elasticsearch, Kibana, Logstash, Beats, APM, OpsBean
-miniobs-600 - miniobs-700 | Third Party            | i.e. Apache Kafka, Grafana etc ...
+stack-000 - stack-100     | Elasticsearch Cluster  | Elasticsearch, Kibana
+stack-100 - stack-200     | Logstash               | Elasticsearch, Kibana, Logstash
+stack-200 - stack-300     | Beats                  | Elasticsearch, Kibana, Logstash, Beats
+stack-300 - stack-400     | APM/Tracing            | Elasticsearch, Kibana, APM, OpsBeans
+stack-400 - stack-500     | Machine Learning       | Elasticsearch, Kibana, Beats, Machine Learning
+stack-500 - stack-600     | Full Stack             | Elasticsearch, Kibana, Logstash, Beats, APM, OpsBean
+stack-600 - stack-700     | Third Party            | i.e. Apache Kafka, Grafana etc ...
 
-###### ELASTICSEARCH CLUSTER: miniobs-000 - miniobs-100 
+###### ELASTICSEARCH CLUSTER: stack-000 - stack-100 
 ---
 
 Name         | Components                   | Description
--------------|------------------------------|------------------------------------------------------------------------------------------
-miniobs-005  | 1x es/1x kb                  | 1x Node cluster with minimal (starter) config 
-miniobs-010  | 1x es/1x kb                  | 1x Node cluster with extended config, basic security and license features
-miniobs-015  | 1x es/1x kb                  | 1x Node cluster with extended config, extended security (ssl) and license features
-miniobs-020  | 3x es/1x kb                  | 3x Node cluster with extended config, basic security and license features
-miniobs-025  | 5x es/1x kb                  | 5x Node cluster with extended config, basic security and license features
+-------------|------------------------------|-----------------------------------------------------------------------------------------
+stack-005    | 1x es/1x kb                  | 1x Node cluster with minimal (starter) config 
+stack-010    | 1x es/1x kb                  | 1x Node cluster with extended config, basic security and license features
+stack-015    | 1x es/1x kb                  | 1x Node cluster with extended config, extended security (ssl) and license features
+stack-020    | 3x es/1x kb                  | 3x Node cluster with extended config, basic security and license features
+stack-025    | 5x es/1x kb                  | 5x Node cluster with extended config, basic security and license features
 
 
-###### LOGSTASH: miniobs-100 - miniobs-200
+###### LOGSTASH: stack-100 - stack-200
 ---
 
 Name         | Components                   | Description
--------------|------------------------------|------------------------------------------------------------------------------------------
-miniobs-105  | 1x es/1x kb/1x ls            | 1x Node cluster with single Logstash instance
-miniobs-110  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => LS => ES composition
-miniobs-115  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition
-miniobs-115  | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition and Alerting feature
+-------------|------------------------------|-----------------------------------------------------------------------------------------
+stack-105    | 1x es/1x kb/1x ls            | 1x Node cluster with single Logstash instance
+stack-110    | 1x es/1x kb/2x ls            | 1x Node cluster with LS => LS => ES composition
+stack-115    | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition
+stack-115    | 1x es/1x kb/2x ls            | 1x Node cluster with LS => ES => LS composition and Alerting feature
+  
 
-
-###### BEATS: miniobs-200 - miniobs-300
+###### BEATS: stack-200 - stack-300
 ---
 Name         | Components                   | Description
--------------|------------------------------|------------------------------------------------------------------------------------------
-miniobs-205  | 1x es/1x kb/1x ls/1x mb      | 1x Node cluster with a single metricbeat instance
-miniobs-210  | 1x es/1x kb/1x ls/1x fb      | 1x Node cluster with a single filebeat instance
+-------------|------------------------------|-----------------------------------------------------------------------------------------
+stack-205    | 1x es/1x kb/1x ls/1x mb      | 1x Node cluster with a single metricbeat instance
+stack-210    | 1x es/1x kb/1x ls/1x fb      | 1x Node cluster with a single filebeat instance
 
 
-###### APM/Tracing: miniobs-300 - miniobs-400
+###### APM/Tracing: stack-300 - stack-400
 ---
 Name         | Components                   | Description
--------------|------------------------------|------------------------------------------------------------------------------------------
-miniobs-305  | 1x es/1x kb/1x apm/1x nodejs | 1x Node cluster with a single apm instance, opbeans nodejs and opbeans rum
+-------------|------------------------------|-----------------------------------------------------------------------------------------
+stack-305    | 1x es/1x kb/1x apm/1x nodejs | 1x Node cluster with a single apm instance, opbeans nodejs and opbeans rum
 
 
-###### FULL STACK: miniobs-500 - miniobs-600
+###### FULL STACK: stack-500 - stack-600
 ---
 Name         | Components                   | Description
--------------|------------------------------|------------------------------------------------------------------------------------------
-miniobs-510  | Full Stack Basic             | With SSL
+-------------|------------------------------|-----------------------------------------------------------------------------------------
+stack-5XX    | Full Stack Basic             | With SSL
 
-###### THIRD PARTY: miniobs-600 - miniobs-700
+###### THIRD PARTY: stack-600 - stack-700
 ---
 Name         | Components                   | Description
--------------|------------------------------|------------------------------------------------------------------------------------------
-miniobs-605  | 1x es/1x kb/1x kl            | 1x Node cluster with Alerting feature and Korrelator service
+-------------|------------------------------|-----------------------------------------------------------------------------------------
+stack-605    | 1x es/1x kb/1x kl            | 1x Node cluster with Alerting feature and Korrelator service
 
 
 SETUP
 ---
 
-1. Clone the miniobs repo
+1. Clone the elastic-stack repo
 
         $ cd ~
-        $ mkdir miniobs-ws01
-        $ cd miniobs-ws01
-        $ git clone https://github.com/prosmc/miniobs.git
+        $ mkdir elastic-stack-ws01
+        $ cd elastic-stack-ws01
+        $ git clone https://github.com/prosmc/elastic-stack.git
 
 2. Setup your environment
 
-        $ cd miniobs
+        $ cd elastic-stack
         $ source ./.xrc
         $ x_setup
 
     **NOTE:** x_setup modifies Linux Kernel parameters and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameters.
       
-3. Choose one of the miniobs use cases (i.e. miniobs-010) and take a look at the specific README\
+3. Choose one of the elastic-stack use cases (i.e. elastic-stack-010) and take a look at the specific README\
    for each project for further information.
 
-        $ cd ~/miniobs/miniobs-010
+        $ cd ~/elastic-stack/stack-010
         $ docker-compose up
 
    **NOTE:** For some recipes it is not sufficent to run the 'docker-compose' command. As mentioned\
@@ -135,7 +135,7 @@ SETUP
         user: elastic
         password: changeme
 
-   ![Kibana Login](resources/assets/images/miniobs-010_pict-01.png)
+   ![Kibana Login](resources/assets/images/stack-010_pict-01.png)
 
 Stop and Start the elastic stack
 ---

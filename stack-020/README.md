@@ -1,19 +1,19 @@
-# miniobs-020 / Extended Architecture
+# stack-020 / Extended Architecture
 
-This recipe contains an elastic stack consisting of 3x elasticsearch and 1x kibana node(s). miniobs-020 has the trial license 
+This recipe contains an elastic stack consisting of 3x elasticsearch and 1x kibana node(s). stack-020 has the trial license 
 and the basic security features enabled. So all license based features (Machine Learning, Watcher etc ...) are accessible by
 default. The main purpose of this cookbook recipe is to get familiar with a mulit-node cluster.
 
-![MINIOBS Extented Architecture](../resources/assets/images/miniobs-ExtendedArchitecture-01.png)
+![Elastic Stack Extented Architecture](../resources/assets/images/ExtendedArchitecture-01.png)
 
-Please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+Please give us a [GitHub Star](https://github.com/prosmc/stack/stargazers)
 if you like the project. Thank you in advance!
 
 ![Made with Herzblut](../resources/assets/images/MadeWithHerzblut01.png) <br>
 
 ###### PREREQUISITES
 ---
-For running the miniobs-recipes(s) you need the following software components on your host system
+For running the stack-recipes(s) you need the following software components on your host system
 
 Name           | Reference    
 -------------- | --------------- 
@@ -24,25 +24,25 @@ docker-compose | [https://docs.docker.com/compose/reference/overview/](https://d
 SETUP
 ---
 
-01. Clone the miniobs repo ( => if it's already done - skip this point!)
+01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir miniobs-ws01
-        $ cd miniobs-ws01
-        $ git clone https://github.com/prosmc/miniobs.git
+        $ mkdir stack-ws01
+        $ cd stack-ws01
+        $ git clone https://github.com/prosmc/stack.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-        $ cd miniobs
+        $ cd stack
         $ source ./.xrc
         $ x_setup
 
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
 
-03. a) Go to the miniobs-20 folder
+03. a) Go to the stack-20 folder
 
-        $ cd ~/miniobs/miniobs-020
+        $ cd ~/stack/stack-020
 
     b) Run the docker-compose command for starting the containers
 
@@ -67,7 +67,7 @@ SETUP
 
         https://localhost:5601/
 
-    ![Kibana Login](../resources/assets/images/miniobs-010_pict-01.png)
+    ![Kibana Login](../resources/assets/images/stack-010_pict-01.png)
 
 05. Use the Elasticsearch REST-API via curl
 
@@ -80,21 +80,21 @@ Turn on Monitoring
 
 06. Go to the section  "Management > Stack Monitoring" in the Drop Down Menu
 
-     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-01.png)
+     ![Stack Monitoring](../resources/assets/images/stack-020_pict-01.png)
 
 07. Turn on Monitoring
 
      **NOTE:** Choose the option 'Or, set up with self monitoring'
 
-     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-02.png)
+     ![Stack Monitoring](../resources/assets/images/stack-020_pict-02.png)
 
-     ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-03.png)
+     ![Stack Monitoring](../resources/assets/images/stack-020_pict-03.png)
 
 08. Cluster Overview
     
-    ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-04.png)
+    ![Stack Monitoring](../resources/assets/images/stack-020_pict-04.png)
 
-    ![Stack Monitoring](../resources/assets/images/miniobs-020_pict-05.png)
+    ![Stack Monitoring](../resources/assets/images/stack-020_pict-05.png)
   
 Stop and Start the elastic stack
 ---

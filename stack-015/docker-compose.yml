@@ -33,7 +33,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx1g -Xms1g"
     volumes:
-      - ~/miniobs/miniobs-015/:/usr/share/elasticsearch/backup
+      - ~/elastic-stack/stack-015/:/usr/share/elasticsearch/backup
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data01:/usr/share/elasticsearch/data
       - certs:$CERTS_DIR

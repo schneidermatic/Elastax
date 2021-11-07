@@ -1,35 +1,35 @@
-# miniobs-115 - Alerting Feature
+# stack-115 - Alerting Feature
 
 The recipe is for testing the new 'Alerting' feature which is shipped with the new elastic stack 'v7.8.x'\
 The following description helps you to get up and running without any effort.
 
-This is made with Herblut/2020 - so please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+This is made with Herblut/2020 - so please give us a [GitHub Star](https://github.com/prosmc/stack/stargazers)
 if you like the project.\ Thank you in advance!
 
 
 SETUP
 ---
 
-01. Clone the miniobs repo ( => if it's already done - skip this point!)
+01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir miniobs-ws01
-        $ cd miniobs-ws01
-        $ git clone https://github.com/prosmc/miniobs.git
+        $ mkdir elastic-stack-ws01
+        $ cd elastic-stack-ws01
+        $ git clone https://github.com/prosmc/elastic-stack.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-        $ cd miniobs
-        $ source ./.envrc
+        $ cd stack
+        $ source ./.xrc
         $ x_setup
 
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
       
-03. a) Choose the use cases miniobs-115 and generate the ssl-certificate which is needed for running\
+03. a) Choose the use cases stack-115 and generate the ssl-certificate which is needed for running\
    Kibana in a secure mode so that the 'Alerting' can be enabled.
 
-        $ cd ~/miniobs/miniobs-115
+        $ cd ~/elastic-stack/stack-115
         $ docker-compose -f create-certs.yml run --rm create_certs
 
     b) After the ssl-cert & ssl-key is generated you can start the elastic stack
@@ -49,19 +49,19 @@ SETUP
         user: elastic
         password: changeme
 
-   ![Kibana Login](resources/assets/images/miniobs-115_pict-01.png)
+   ![Kibana Login](resources/assets/images/stack-115_pict-01.png)
 
 05. Select the Drop-Down Menue
    
-   ![Kibana Login](resources/assets/images/miniobs-115_pict-02.png)
+   ![Kibana Login](resources/assets/images/stack-115_pict-02.png)
 
 06. Choose the item "Stack Management"
    
-   ![Kibana Login](resources/assets/images/miniobs-115_pict-03.png)
+   ![Kibana Login](resources/assets/images/stack-115_pict-03.png)
 
 07. Click on the item "Alerts and Actions" in the Kibana section
    
-   ![Kibana Login](resources/assets/images/miniobs-115_pict-04.png)
+   ![Kibana Login](resources/assets/images/stack-115_pict-04.png)
 
    Create your first alert.
 

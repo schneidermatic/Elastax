@@ -28,7 +28,7 @@ services:
       - path.repo=/usr/share/elasticsearch/backup
       - "ES_JAVA_OPTS=-Xmx512m -Xms512m"
     volumes:
-      - ~/miniobs/miniobs-010/:/usr/share/elasticsearch/backup:rw
+      - ~/elastic-stack/stack-010/:/usr/share/elasticsearch/backup:rw
       - ./resources/es01/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - data01:/usr/share/elasticsearch/data
     ulimits:

@@ -1,8 +1,8 @@
-# CHANGELOG
+# CHANGES
 
-## elastic-stack/2021-11-11/schneidermatic
-### ADDED:
-- Branch/Release v7.15.1 was added.
+7.15.1 (2021-11-11)
+---------------------
+- Recipes were updated for elastic release 'v7.15.1'
 
 ## miniobs-7.15.0/2021-10-01/schneidermatic
 ### ADDED:

@@ -45,8 +45,7 @@ stack-100 - stack-200     | Logstash               | Elasticsearch, Kibana, Logs
 stack-200 - stack-300     | Beats                  | Elasticsearch, Kibana, Logstash, Beats
 stack-300 - stack-400     | APM/Tracing            | Elasticsearch, Kibana, APM, OpsBeans
 stack-400 - stack-500     | Machine Learning       | Elasticsearch, Kibana, Beats, Machine Learning
-stack-500 - stack-600     | Full Stack             | Elasticsearch, Kibana, Logstash, Beats, APM, OpsBean
-stack-600 - stack-700     | Third Party            | i.e. Apache Kafka, Grafana etc ...
+stack-500 - stack-600     | Third Party            | i.e. Apache Kafka, Grafana etc ...
 
 ###### ELASTICSEARCH CLUSTER: stack-000 - stack-100 
 ---
@@ -91,17 +90,11 @@ Name         | Components                   | Description
 -------------|------------------------------|-----------------------------------------------------------------------------------------
 stack-405    | 1x es/1x kb/1x ml            | 1x Node cluster with ml activated, extended security (ssl) and license features
 
-###### FULL STACK: stack-500 - stack-600
+###### THIRD PARTY: stack-500 - stack-600
 ---
 Name         | Components                   | Description
 -------------|------------------------------|-----------------------------------------------------------------------------------------
-stack-5XX    | Full Stack Basic             | With SSL
-
-###### THIRD PARTY: stack-600 - stack-700
----
-Name         | Components                   | Description
--------------|------------------------------|-----------------------------------------------------------------------------------------
-stack-605    | 1x es/1x kb/1x kl            | 1x Node cluster with Alerting feature and Korrelator service
+stack-505    | 1x es/1x kb/1x kl            | 1x Node cluster with Alerting feature and Korrelator service
 
 
 SETUP

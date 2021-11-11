@@ -27,13 +27,29 @@
 
 export PROJECT_HOME=$(pwd)
 export PROJECT_NAME="elastic-stack"
-export NEW_RELEASE='ELASTIC_RELEASE=7.15.1'
+export NEW_RELEASE='ELASTIC_RELEASE=7.15.2'
 
 PATH=$PROJECT_HOME/resources:$PATH
 
-## ALIASES FOR elastnow
-alias cmd="alias | grep 'x_'"
+##----------------------------------------
+## SETUP HOST PREREQUISITES
+##----------------------------------------
+x_setup() {
+    "$PROJECT_HOME/resources/setup/setup.sh"
+}
 
-## INSTALL/UNINSTALL COMMANDS
-alias x_setup="$PROJECT_HOME/resources/setup/setup.sh"
-alias x_nextrel="$PROJECT_HOME/resources/scripts/nextrel.sh"
+##----------------------------------------
+## SETUP NEXT RELEASE IN '.env' FILE
+##----------------------------------------
+x_nextrel() {
+    "$PROJECT_HOME/resources/scripts/nextrel.sh"
+}
+
+##########################################
+##########################################
+#####   ---   ALL COMMANDS    ---    #####
+##########################################
+##########################################
+x_cmd() {
+  declare -F | grep "x_" | sed -E 's/declare -f //'
+}

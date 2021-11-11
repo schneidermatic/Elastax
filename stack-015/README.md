@@ -1,19 +1,19 @@
-# miniobs-015 / Basic Architecture
+# stack-015 / Basic Architecture
 
-This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. miniobs-015 has the trial license 
+This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. elastic-stax-015 has the trial license 
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
 default. In addition ssl encryption is activated for Kibana so that the 'Alerting' feature is also enabled.
 
 ![Elastic Stack Basic Architecture](../resources/assets/images/BasicArchitecture-01.png)
 
-Please give us a [GitHub Star](https://github.com/prosmc/miniobs/stargazers)
+Please give us a [GitHub Star](https://github.com/schneidermatix/elastic-stax/stargazers)
 if you like the project. Thank you in advance!
 
 ![Made with Herzblut](../resources/assets/images/MadeWithHerzblut01.png) <br>
 
 ###### PREREQUISITES
 ---
-For running the miniobs-recipes(s) you need the following software components on your host system
+For running the elastic-stax recipes(s) you need the following software components on your host system
 
 Name           | Reference    
 -------------- | --------------- 
@@ -24,26 +24,26 @@ docker-compose | [https://docs.docker.com/compose/reference/overview/](https://d
 SETUP
 ---
 
-01. Clone the miniobs repo ( => if it's already done - skip this point!)
+01. Clone the elastic-stax repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir miniobs-ws01
-        $ cd miniobs-ws01
-        $ git clone https://github.com/prosmc/miniobs.git
+        $ mkdir elastic-stax-ws01
+        $ cd elastic-stax-ws01
+        $ git clone https://github.com/schneidermatix/elastic-stax.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-        $ cd miniobs
+        $ cd elastic-stax
         $ source ./.xrc
         $ x_setup
 
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
 
-03. a) Choose the use cases miniobs-015 and generate the ssl-certificate which is needed for running\
+03. a) Choose the use cases elastic-stax-015 and generate the ssl-certificate which is needed for running\
    Kibana in a secure mode so that the 'Alerting' can be enabled.
 
-        $ cd ~/miniobs/miniobs-015
+        $ cd ~/elastic-stax/elastic-stax-015
  
     b) Generate the ssl-cert & ssl-key 
 
@@ -72,7 +72,7 @@ SETUP
 
         https://localhost:5601/
 
-    ![Kibana Login](../resources/assets/images/miniobs-015_pict-01.png)
+    ![Kibana Login](../resources/assets/images/elastic-stax-015_pict-01.png)
 
 05. Use the Elasticsearch REST-API via curl
 

@@ -6,7 +6,7 @@ default. The main purpose of this cookbook recipe is to get familiar with a muli
 
 ![Elastic Stack Extented Architecture](../resources/assets/images/ExtendedArchitecture-01.png)
 
-Please give us a [GitHub Star](https://github.com/prosmc/stack/stargazers)
+Please give us a [GitHub Star](https://github.com/schneidermatix/elastic-stax/stargazers)
 if you like the project. Thank you in advance!
 
 ![Made with Herzblut](../resources/assets/images/MadeWithHerzblut01.png) <br>
@@ -29,7 +29,7 @@ SETUP
         $ cd ~
         $ mkdir elastic-stack-ws01
         $ cd elastic-stack-ws01
-        $ git clone https://github.com/prosmc/elastic-stack.git
+        $ git clone https://github.com/schneidermatix/elastic-stack.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 

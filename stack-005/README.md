@@ -26,7 +26,7 @@ SETUP
         $ cd ~
         $ mkdir elastic-stax-ws01
         $ cd elastic-stax-ws01
-        $ git clone https://github.com/prosmc/elastic-stax.git
+        $ git clone https://github.com/schneidermatix/elastic-stax.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 

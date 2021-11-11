@@ -27,9 +27,9 @@ SETUP
 01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir stack-ws01
-        $ cd stack-ws01
-        $ git clone https://github.com/prosmc/stack.git
+        $ mkdir elastic-stax-ws01
+        $ cd elastic-stax-ws01
+        $ git clone https://github.com/schneidermatix/elastic-stax.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 

@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## miniobs-7.15.0/2021/schneidermatic
+## elastic-stack/2021-11-11/schneidermatic
+### ADDED:
+- Branch/Release v7.15.1 was added.
+
+## miniobs-7.15.0/2021-10-01/schneidermatic
 ### ADDED:
 - Branch/Release miniobs-7.15.0 was added.
 

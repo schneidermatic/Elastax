@@ -28,7 +28,7 @@
 ##----------------------------------------
 ## SETUP FUNCTIONS
 ##----------------------------------------
-nextrel() {
+newrel() {
     for file in $(find $PROJECT_HOME -name '.env'); do
       grep -rl ELASTIC_RELEASE $file | xargs sed -i "s/ELASTIC_RELEASE=.*/$NEW_RELEASE/g"
     done
@@ -38,7 +38,7 @@ nextrel() {
 ## MAIN
 ##----------------------------------------
 run_main() {
-   nextrel
+   newrel
 }
 
 run_main "$@"

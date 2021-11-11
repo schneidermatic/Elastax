@@ -41,8 +41,8 @@ x_setup() {
 ##----------------------------------------
 ## SETUP NEXT RELEASE IN '.env' FILE
 ##----------------------------------------
-x_nextrel() {
-    "$PROJECT_HOME/resources/scripts/nextrel.sh"
+x_newrel() {
+    "$PROJECT_HOME/resources/scripts/newrel.sh"
 }
 
 ##########################################

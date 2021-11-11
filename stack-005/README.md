@@ -24,13 +24,13 @@ SETUP
 01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir elastic-stack-ws01
-        $ cd elastic-stack-ws01
-        $ git clone https://github.com/prosmc/elastic-stack.git
+        $ mkdir elastic-stax-ws01
+        $ cd elastic-stax-ws01
+        $ git clone https://github.com/prosmc/elastic-stax.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-        $ cd elastic-stack
+        $ cd elastic-stax
         $ source ./.xrc
         $ x_setup
 
@@ -39,7 +39,7 @@ SETUP
       
 03. a) Go to the stack-005 folder
 
-        $ cd ~/elastic-stack-ws01/elastic-stack/stack-005
+        $ cd ~/elastic-stax-ws01/elastic-stax/stack-005
 
     b) Run the docker-compose command for starting the containers
 

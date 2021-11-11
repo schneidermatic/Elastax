@@ -26,7 +26,7 @@
 #==============================================================================
 
 export PROJECT_HOME=$(pwd)
-export PROJECT_NAME="elastic-stack"
+export PROJECT_NAME="elastic-stax"
 export NEW_RELEASE='ELASTIC_RELEASE=7.15.2'
 
 PATH=$PROJECT_HOME/resources:$PATH

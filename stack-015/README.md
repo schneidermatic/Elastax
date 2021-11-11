@@ -27,8 +27,8 @@ SETUP
 01. Clone the elastic-stax repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir elastic-stax-ws01
-        $ cd elastic-stax-ws01
+        $ mkdir workspace
+        $ cd workspace
         $ git clone https://github.com/schneidermatix/elastic-stax.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
@@ -43,7 +43,7 @@ SETUP
 03. a) Choose the use cases elastic-stax-015 and generate the ssl-certificate which is needed for running\
    Kibana in a secure mode so that the 'Alerting' can be enabled.
 
-        $ cd ~/elastic-stax/elastic-stax-015
+        $ cd ./stack-015
  
     b) Generate the ssl-cert & ssl-key 
 
@@ -72,7 +72,7 @@ SETUP
 
         https://localhost:5601/
 
-    ![Kibana Login](../resources/assets/images/elastic-stax-015_pict-01.png)
+    ![Kibana Login](../resources/assets/images/stack-015_pict-01.png)
 
 05. Use the Elasticsearch REST-API via curl
 

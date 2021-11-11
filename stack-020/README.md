@@ -27,13 +27,13 @@ SETUP
 01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir elastic-stack-ws01
-        $ cd elastic-stack-ws01
+        $ mkdir workspace
+        $ cd workspace
         $ git clone https://github.com/schneidermatix/elastic-stack.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
 
-        $ cd elastic-stack
+        $ cd elastic-stax
         $ source ./.xrc
         $ x_setup
 
@@ -42,7 +42,7 @@ SETUP
 
 03. a) Go to the stack-20 folder
 
-        $ cd ~/elastic-stack/stack-020
+        $ cd ./stack-020
 
     b) Run the docker-compose command for starting the containers
 

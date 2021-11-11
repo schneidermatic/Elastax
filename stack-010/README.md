@@ -6,7 +6,7 @@ default.
 
 ![Elastic Stack Basic Architecture](../resources/assets/images/BasicArchitecture-01.png)
 
-Please give us a [GitHub Star](https://github.com/prosmc/stack/stargazers)
+Please give us a [GitHub Star](https://github.com/schneidermatix/elastic-stax/stargazers)
 if you like the project. Thank you in advance!
 
 ![Made with Herzblut](../resources/assets/images/MadeWithHerzblut01.png) <br>

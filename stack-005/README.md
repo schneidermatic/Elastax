@@ -5,7 +5,7 @@ to get up and running without any effort and as quick as possible.
 
 ![Elastic Stack Basic Architecture](../resources/assets/images/BasicArchitecture-01.png)
 
-This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/prosmc/stack/stargazers)
+This is made with Herblut/2021 - please give us a [GitHub Star](https://github.com/schneidermatix/elastic-stax/stargazers)
 if you like the project. Thank you in advance!
 
 ###### PREREQUISITES

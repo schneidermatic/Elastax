@@ -24,8 +24,8 @@ SETUP
 01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir elastic-stax-ws01
-        $ cd elastic-stax-ws01
+        $ mkdir workspace
+        $ cd workspace
         $ git clone https://github.com/schneidermatix/elastic-stax.git
 
 02. Initial setup of your environment ( => if it's already done - skip this point!)
@@ -39,11 +39,11 @@ SETUP
       
 03. a) Go to the stack-005 folder
 
-        $ cd ~/elastic-stax-ws01/elastic-stax/stack-005
+        $ cd ./stack-005
 
     b) Run the docker-compose command for starting the containers
 
-        $ docker-compose run -d
+        $ docker-compose up -d
 
     **NOTE:** The '.xrc' file contains some short-hand functions for an easier handling. So you\
     can run the 'x_up' command for starting the containers.

@@ -1,10 +1,37 @@
+#!/bin/sh
+#******************************************************************************
+# Copyright 2021 the original author or authors.                              *
+#                                                                             *
+# Licensed under the Apache License, Version 2.0 (the "License");             *
+# you may not use this file except in compliance with the License.            *
+# You may obtain a copy of the License at                                     *
+#                                                                             *
+# http://www.apache.org/licenses/LICENSE-2.0                                  *
+#                                                                             *
+# Unless required by applicable law or agreed to in writing, software         *
+# distributed under the License is distributed on an "AS IS" BASIS,           *
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.    *
+# See the License for the specific language governing permissions and         *
+# limitations under the License.                                              *
+#******************************************************************************/
+export PROJECT_HOME=$(pwd)
+export RESOURCES_HOME=$PROJECT_HOME/../resources
 
-x_setup() {
+#==============================================================================
+# SCRIPT:   .xrc
+# AUTOHR:   Markus Schneider (schneidermatic)
+# DATE:     2021-03-25
+# REV:      0.5.0
+# PLATFORM: noarch
+# PURPOSE:  Shell environment file for the x_ command space
+#==============================================================================
+
+. $RESOURCES_HOME/scripts/.xrc
+
+##----------------------------------------
+## SPECIFIC SETUP PROCEDURES
+##----------------------------------------
+x_up() {
    docker-compose -f create-certs.yml run --rm create_certs && \
-   docker-compose up
-}   
-
-x_down() {
-   docker-compose down -v
+   docker-compose up -d
 }
-

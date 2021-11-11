@@ -1,6 +1,5 @@
-#!/bin/bash
 #******************************************************************************
-# Copyright 2019 the original author or authors.                              *
+# Copyright 2020 the original author or authors.                              *
 #                                                                             *
 # Licensed under the Apache License, Version 2.0 (the "License");             *
 # you may not use this file except in compliance with the License.            *
@@ -15,52 +14,51 @@
 # limitations under the License.                                              *
 #******************************************************************************/
 
+
 #==============================================================================
-# SCRIPT:       remove.sh
+# SCRIPT:       .xrc
 # AUTOHR:       Markus Schneider
 # CONTRIBUTERS: Markus Schneider,<YOU>
-# DATE:         2019-05-26
+# DATE:         2020-01-22
 # REV:          0.1.0
 # PLATFORM:     Noarch
-# PURPOSE:      remove all elastmon docker images
+# PURPOSE:      Shell environment file
 #==============================================================================
+export PROJECT_NAME="elastic-stax"
+export NEW_RELEASE='ELASTIC_RELEASE=7.15.2'
+
+PATH=$PROJECT_HOME/resources:$PATH
 
 ##----------------------------------------
-## CONFIG
+## SETUP HOST PREREQUISITES
 ##----------------------------------------
-USER=$(id -un)
-GROUP=$(id -gn)
-TIMESTAMP=$(date +%Y-%m-%dT%H:%M:%S.%3NZ)
-DOCKER_IMAGES=( "docker.elastic.co/elasticsearch/elasticsearch" \
-                "docker.elastic.co/kibana/kibana" \
-                "docker.elastic.co/logstash/logstash" \
-                "docker.elastic.co/beats/auditbeat" \
-                "docker.elastic.co/beats/filebeat" \
-                "docker.elastic.co/beats/metricbeat" \
-                "docker.elastic.co/beats/packetbeat" \
-                "docker.elastic.co/beats/heartbeat" \
-                "docker.elastic.co/beats/journalbeat" \
-                "docker.elastic.co/apm/apm-server" \
-                "setup_setup" \
-                "docker/compose" )
-
-##----------------------------------------
-## SETUP FUNCTIONS
-##----------------------------------------
-run_remove() {
-    printf "==> Run 'remove.sh' for %s\n" $PROJECT_NAME
-    docker-compose -f $PROJECT_HOME/docker-compose.yml down -v
-
-    for DOCKER_IMAGE in ${DOCKER_IMAGES[@]}; do
-        docker rmi $(docker images $DOCKER_IMAGE -q)
-    done
+x_setup() {
+    "$RESOURCES_HOME/scripts/setup.sh"
 }
 
 ##----------------------------------------
-## MAIN
+## SETUP NEXT RELEASE IN '.env' FILE
 ##----------------------------------------
-remove_main() {
-   run_remove
+x_newrel() {
+    "$RESOURCES_HOME/scripts/newrel.sh"
 }
 
-remove_main "$@"
+##----------------------------------------
+## BASIC SETUP PROCEDURES
+##----------------------------------------
+x_up() {
+   docker-compose up -d
+}   
+
+x_down() {
+   docker-compose down -v
+}
+
+##########################################
+##########################################
+#####   ---   ALL COMMANDS    ---    #####
+##########################################
+##########################################
+x_cmd() {
+  declare -F | grep "x_" | sed -E 's/declare -f //'
+}

@@ -1,7 +1,7 @@
 # elastic-stax
 
-elastic-stax v7.15.2 contains various elastic stack cookbook recipes based on elastic v7.15.2
-These projects were created for demo or learning purposes only!
+elastic-stax v7.15.2 contains various docker-compose projects based on elastic v7.15.2
+These projects were created for demo and learning purposes only!
 
 ![Made with Herzblut](resources/assets/images/MadeWithHerzblut01.png) <br>
 Please give us a [GitHub Star](https://github.com/prosmc/elastic-stax/stargazers)
@@ -23,7 +23,6 @@ Elastic Solutions <br/>
 Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0) <br/>
 Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0](https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0) <br/>
 Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-15-0](https://www.elastic.co/blog/whats-new-elastic-security-7-15-0) <br/>
-
 
 
 ###### PREREQUISITES
@@ -59,7 +58,6 @@ stack-010    | 1x es/1x kb                  | 1x Node cluster with extended conf
 stack-015    | 1x es/1x kb                  | 1x Node cluster with extended config, extended security (ssl) and license features
 stack-020    | 3x es/1x kb                  | 3x Node cluster with extended config, basic security and license features
 stack-025    | 5x es/1x kb                  | 5x Node cluster with extended config, basic security and license features
-stack-030    | 1x es/1x kb/1x ml            | 1x Node cluster with ml activated, extended security (ssl) and license features
 
 
 ###### LOGSTASH: stack-100 - stack-200
@@ -87,6 +85,11 @@ Name         | Components                   | Description
 -------------|------------------------------|-----------------------------------------------------------------------------------------
 stack-305    | 1x es/1x kb/1x apm/1x nodejs | 1x Node cluster with a single apm instance, opbeans nodejs and opbeans rum
 
+###### MACHINE LEARNING: stack-400 - stack-500
+---
+Name         | Components                   | Description
+-------------|------------------------------|-----------------------------------------------------------------------------------------
+stack-405    | 1x es/1x kb/1x ml            | 1x Node cluster with ml activated, extended security (ssl) and license features
 
 ###### FULL STACK: stack-500 - stack-600
 ---
@@ -107,8 +110,8 @@ SETUP
 1. Clone the elastic-stax repo
 
         $ cd ~
-        $ mkdir elastic-stax-ws01
-        $ cd elastic-stax-ws01
+        $ mkdir workspace
+        $ cd workspace
         $ git clone https://github.com/prosmc/elastic-stax.git
 
 2. Setup your environment
@@ -120,11 +123,11 @@ SETUP
     **NOTE:** x_setup modifies Linux Kernel parameters and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameters.
       
-3. Choose one of the elastic-stax use cases (i.e. elastic-stax-010) and take a look at the specific README\
+3. Choose one of the elastic-stax projects (i.e. stack-010) and take a look at the specific README\
    for each project for further information.
 
         $ cd ~/elastic-stax/stack-010
-        $ docker-compose up
+        $ docker-compose up -d
 
    **NOTE:** For some recipes it is not sufficent to run the 'docker-compose' command. As mentioned\
    above take a look at the README of each recipe.

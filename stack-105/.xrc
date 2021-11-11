@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #******************************************************************************
-# Copyright 2020 the original author or authors.                              *
+# Copyright 2021 the original author or authors.                              *
 #                                                                             *
 # Licensed under the Apache License, Version 2.0 (the "License");             *
 # you may not use this file except in compliance with the License.            *
@@ -14,39 +14,16 @@
 # See the License for the specific language governing permissions and         *
 # limitations under the License.                                              *
 #******************************************************************************/
+export PROJECT_HOME=$(pwd)
+export RESOURCES_HOME=$PROJECT_HOME/../resources
 
 #==============================================================================
-# SCRIPT:       setup.sh
-# AUTOHR:       Markus Schneider
-# CONTRIBUTERS: Markus Schneider,<YOU>
-# DATE:         2021-10-07
-# REV:          0.1.1
-# PLATFORM:     Noarch
-# PURPOSE:      setup the elastic-stack environment
+# SCRIPT:   .xrc
+# AUTOHR:   Markus Schneider (schneidermatic)
+# DATE:     2021-03-25
+# REV:      0.5.0
+# PLATFORM: noarch
+# PURPOSE:  Shell environment file for the x_ command space
 #==============================================================================
-SLEEP_TIME=30
 
-##----------------------------------------
-## SETUP FUNCTIONS
-##----------------------------------------
-run_setup() {
-    sudo chown root:root $PROJECT_HOME/stack-205/config/mb01/metricbeat.yml
-    sudo $PROJECT_HOME/resources/setup/prereq.sh && \
-    echo "" && \
-    echo "" && \
-    echo "########################################" && \
-    echo "# System is rebooting in 30 seconds!!! #" && \
-    echo "########################################" && \
-    echo "" && \
-    sleep $SLEEP_TIME && \
-    sudo reboot
-}
-
-##----------------------------------------
-## MAIN
-##----------------------------------------
-run_main() {
-   run_setup
-}
-
-run_main "$@"
+. $RESOURCES_HOME/scripts/.xrc

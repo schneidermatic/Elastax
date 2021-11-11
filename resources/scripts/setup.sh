@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #******************************************************************************
-# Copyright 2019 the original author or authors.                              *
+# Copyright 2020 the original author or authors.                              *
 #                                                                             *
 # Licensed under the Apache License, Version 2.0 (the "License");             *
 # you may not use this file except in compliance with the License.            *
@@ -16,37 +16,37 @@
 #******************************************************************************/
 
 #==============================================================================
-# SCRIPT:       bootstrap.sh
+# SCRIPT:       setup.sh
 # AUTOHR:       Markus Schneider
 # CONTRIBUTERS: Markus Schneider,<YOU>
-# DATE:         2019-05-26
-# REV:          0.1.0
+# DATE:         2021-10-07
+# REV:          0.1.1
 # PLATFORM:     Noarch
-# PURPOSE:      Bootstrap script for elastmon 
+# PURPOSE:      setup the elastic-stack environment
 #==============================================================================
-
-##----------------------------------------
-## CONFIG
-##----------------------------------------
-USER=$(id -un)
-GROUP=$(id -gn)
-TIMESTAMP=$(date +%Y-%m-%dT%H:%M:%S.%3NZ)
+SLEEP_TIME=30
 
 ##----------------------------------------
 ## SETUP FUNCTIONS
 ##----------------------------------------
-run_bootstrap() {
-    printf "==> Run 'bootstrap.sh' for %s\n" $PROJECT_NAME
-    printf "==> Run docker compose setup\n"
-    printf "==> docker-compose run -e PROJECT_NAME=%s -f setup/setup.yml --rm setup\n" $PROJECT_NAME
-    docker-compose -f $PROJECT_HOME/setup/setup.yml run -e PROJECT_NAME=$PROJECT_NAME --rm setup
+run_setup() {
+    sudo chown root:root $RESOURCES_HOME/../stack-205/resources/mb01/metricbeat.yml
+    sudo $RESOURCES_HOME/scripts/prereq.sh && \
+    echo "" && \
+    echo "" && \
+    echo "########################################" && \
+    echo "# System is rebooting in 30 seconds!!! #" && \
+    echo "########################################" && \
+    echo "" && \
+    sleep $SLEEP_TIME && \
+    sudo reboot
 }
 
 ##----------------------------------------
 ## MAIN
 ##----------------------------------------
-bootstrap_main() {
-   run_bootstrap
+run_main() {
+   #run_setup
 }
 
-bootstrap_main "$@"
+run_main "$@"

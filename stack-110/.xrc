@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 #******************************************************************************
-# Copyright 2019 the original author or authors.                              *
+# Copyright 2021 the original author or authors.                              *
 #                                                                             *
 # Licensed under the Apache License, Version 2.0 (the "License");             *
 # you may not use this file except in compliance with the License.            *
@@ -14,34 +14,16 @@
 # See the License for the specific language governing permissions and         *
 # limitations under the License.                                              *
 #******************************************************************************/
-
-#==============================================================================
-# SCRIPT:       envrc
-# AUTOHR:       Markus Schneider
-# CONTRIBUTERS: Markus Schneider,<YOU>
-# DATE:         2019-05-26
-# REV:          0.1.0
-# PLATFORM:     Noarch
-# PURPOSE:      Shell environment file
-#==============================================================================
-
 export PROJECT_HOME=$(pwd)
-export PROJECT_NAME="miniobs"
+export RESOURCES_HOME=$PROJECT_HOME/../resources
 
-## SET PASSWORD FOR USER ELASTIC
-#PW=$(openssl rand -base64 16;)
-#PW="geSTiSClynE6ZmkIkYmwWw=="
-PW="changeme"
-ELASTIC_PASSWORD="${ELASTIC_PASSWORD:-$PW}"
-export ELASTIC_PASSWORD
+#==============================================================================
+# SCRIPT:   .xrc
+# AUTOHR:   Markus Schneider (schneidermatic)
+# DATE:     2021-03-25
+# REV:      0.5.0
+# PLATFORM: noarch
+# PURPOSE:  Shell environment file for the x_ command space
+#==============================================================================
 
-PATH=$PROJECT_HOME/scripts:$PATH
-
-## ALIASES FOR elastack
-alias cmd="alias | grep 'x_'"
-
-## INSTALL/UNINSTALL COMMANDS
-alias x_inst="bootstrap.sh"
-alias x_uninst="docker-compose -f $PROJECT_HOME/docker-compose.yml down -v"
-alias x_rm="remove.sh"
-
+. $RESOURCES_HOME/scripts/.xrc

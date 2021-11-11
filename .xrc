@@ -1,5 +1,6 @@
+#!/bin/sh
 #******************************************************************************
-# Copyright 2020 the original author or authors.                              *
+# Copyright 2021 the original author or authors.                              *
 #                                                                             *
 # Licensed under the Apache License, Version 2.0 (the "License");             *
 # you may not use this file except in compliance with the License.            *
@@ -13,43 +14,15 @@
 # See the License for the specific language governing permissions and         *
 # limitations under the License.                                              *
 #******************************************************************************/
-
+export RESOURCES_HOME=$(pwd)/resources
 
 #==============================================================================
-# SCRIPT:       .xrc
-# AUTOHR:       Markus Schneider
-# CONTRIBUTERS: Markus Schneider,<YOU>
-# DATE:         2020-01-22
-# REV:          0.1.0
-# PLATFORM:     Noarch
-# PURPOSE:      Shell environment file
+# SCRIPT:   .xrc
+# AUTOHR:   Markus Schneider (schneidermatic)
+# DATE:     2021-03-25
+# REV:      0.5.0
+# PLATFORM: noarch
+# PURPOSE:  Shell environment file for the x_ command space
 #==============================================================================
 
-export PROJECT_HOME=$(pwd)
-export PROJECT_NAME="elastic-stax"
-export NEW_RELEASE='ELASTIC_RELEASE=7.15.2'
-
-PATH=$PROJECT_HOME/resources:$PATH
-
-##----------------------------------------
-## SETUP HOST PREREQUISITES
-##----------------------------------------
-x_setup() {
-    "$PROJECT_HOME/resources/setup/setup.sh"
-}
-
-##----------------------------------------
-## SETUP NEXT RELEASE IN '.env' FILE
-##----------------------------------------
-x_newrel() {
-    "$PROJECT_HOME/resources/scripts/newrel.sh"
-}
-
-##########################################
-##########################################
-#####   ---   ALL COMMANDS    ---    #####
-##########################################
-##########################################
-x_cmd() {
-  declare -F | grep "x_" | sed -E 's/declare -f //'
-}
+. $RESOURCES_HOME/scripts/.xrc

@@ -1,6 +1,6 @@
-# stack-015 / Basic Architecture
+# stack-405/ Basic Architecture
 
-This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. stack-015 has the trial license 
+This recipe contains an elastic stack consisting of 1x elasticsearch and 1x kibana node. stack-405has the trial license 
 and the basic security features enabled. So all license based features are activated (Machine Learning, Watcher etc ...) by
 default. In addition ssl encryption is activated for Kibana so that the 'Alerting' feature is also enabled.
 
@@ -27,7 +27,7 @@ SETUP
 01. Clone the stack repo ( => if it's already done - skip this point!)
 
         $ cd ~
-        $ mkdir stack-ws01
+        $ mkdir workspace
         $ cd stack-ws01
         $ git clone https://github.com/schneidermatix/stack.git
 
@@ -40,7 +40,7 @@ SETUP
     **NOTE:** x_setup modifies Kernel parameter and reboots your host system after 30 seconds\
     due to the modifications of the kernel parameter.
 
-03. a) Choose the use cases stack-015 and generate the ssl-certificate which is needed for running\
+03. a) Choose the use cases stack-405and generate the ssl-certificate which is needed for running\
    Kibana in a secure mode so that the 'Alerting' can be enabled.
 
         $ cd ~/stack/stack-015

@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and         *
 # limitations under the License.                                              *
 #******************************************************************************/
-CWD=$(pwd)
+export PROJECT_HOME=$(pwd)
+export RESOURCES_HOME=$PROJECT_HOME/../resources
 
 #==============================================================================
 # SCRIPT:   .xrc
@@ -25,23 +26,12 @@ CWD=$(pwd)
 # PURPOSE:  Shell environment file for the x_ command space
 #==============================================================================
 
+. $RESOURCES_HOME/scripts/.xrc
+
 ##----------------------------------------
-## BASIC SETUP PROCEDURES
+## SPECIFIC SETUP PROCEDURES
 ##----------------------------------------
 x_up() {
    docker-compose -f create-certs.yml run --rm create_certs && \
    docker-compose up -d
-}   
-
-x_down() {
-   docker-compose down -v
-}
-
-##########################################
-##########################################
-#####   ---   ALL COMMANDS    ---    #####
-##########################################
-##########################################
-x_cmd() {
-  declare -F | grep "x_" | sed -E 's/declare -f //'
 }

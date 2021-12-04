@@ -16,6 +16,7 @@
 #******************************************************************************/
 export PROJECT_HOME=$(pwd)
 export RESOURCES_HOME=$PROJECT_HOME/../resources
+export ELASTIC_SSL="yes"
 
 #==============================================================================
 # SCRIPT:   .xrc
@@ -27,11 +28,3 @@ export RESOURCES_HOME=$PROJECT_HOME/../resources
 #==============================================================================
 
 . $RESOURCES_HOME/scripts/.xrc
-
-##----------------------------------------
-## SPECIFIC SETUP PROCEDURES
-##----------------------------------------
-x_up() {
-   docker-compose -f create-certs.yml run --rm create_certs && \
-   docker-compose up -d
-}

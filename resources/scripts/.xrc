@@ -50,15 +50,47 @@ x_evt() {
 }
 
 ##----------------------------------------
+## SHOW WEB CONSOLE ENDPOINT
+##----------------------------------------
+x_banner() {
+   cat << EOM
+      _           _   _               _             
+  ___| | ____ ___| |_(_) ___      ___| |_ ______  __
+ / _ \ |/ _  / __| __| |/ __|____/ __| __/ _  \ \/ /
+|  __/ | (_| \__ \ |_| | (_|_____\__ \ || (_| |>  <
+ \___|_|\__,_|___/\__|_|\___|    |___/\__\__,_/_/\_\\
+
+EOM
+}
+
+x_show_details() {
+  x_banner
+  cat << EOM                                                    
+URL: $1
+USER: elastic
+PASSWORD: changeme
+EOM
+}   
+
+##----------------------------------------
 ## BASIC SETUP PROCEDURES
 ##----------------------------------------
 x_up() {
-   docker-compose up -d
+  if [ "$ELASTIC_SSL" == "yes" ]
+  then
+    docker-compose -f create-certs.yml run --rm create_certs && \
+    docker-compose up -d
+    x_show_details "https://0.0.0.0:5601" 
+  else
+    docker-compose up -d
+    x_show_details "http://0.0.0.0:5601" 
+  fi
 }   
 
 x_down() {
    docker-compose down -v
 }
+
 
 ##########################################
 ##########################################

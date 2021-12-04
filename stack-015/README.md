@@ -61,7 +61,7 @@ SETUP
 
     A list of all 'x_*' short-hand commands you can get by running ...
 
-        $ x_cmd
+        $ x_ls
 
 04. Use Kibana for further actions
 

@@ -16,6 +16,7 @@
 #******************************************************************************/
 export PROJECT_HOME=$(pwd)
 export RESOURCES_HOME=$PROJECT_HOME/../resources
+export ELASTIC_SSL="no"
 
 #==============================================================================
 # SCRIPT:   .xrc

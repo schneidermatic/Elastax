@@ -105,7 +105,7 @@ SETUP
         $ cd ~
         $ mkdir workspace
         $ cd workspace
-        $ git clone https://github.com/prosmc/elastic-stax.git
+        $ git clone https://github.com/schneidermatix/elastic-stax.git
 
 2. Setup your environment
 

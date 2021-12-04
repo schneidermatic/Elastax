@@ -11,14 +11,6 @@ if you like the project. Thank you in advance!
 ---
 Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-15-0](https://www.elastic.co/blog/whats-new-elastic-7-15-0) <br/>
 
-
-Elastic Stack <br/>
-Elasticsearch: [https://www.elastic.co/de/blog/whats-new-elasticsearch-7-15-0](https://www.elastic.co/de/blog/whats-new-elasticsearch-7-15-0) <br/>
-Kibana: [https://www.elastic.co/blog/whats-new-kibana-7-15-0](https://www.elastic.co/blog/whats-new-kibana-7-15-0) <br/>
-
-Elastic Cloud <br/>
-Elastic Cloud Enterprise: [https://www.elastic.co/blog/whats-new-elastic-cloud-7-15-0](https://www.elastic.co/blog/whats-new-elastic-cloud-7-15-0)<br/>
-
 Elastic Solutions <br/>
 Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0) <br/>
 Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0](https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0) <br/>
@@ -38,7 +30,7 @@ docker-compose | [https://docs.docker.com/compose/reference/overview/](https://d
 ###### REPOSITORY CONTENT
 ---
 
-Recipe Categories         | Main Focus             | Components
+Stack Categories         | Main Focus             | Components
 --------------------------|------------------------|-----------------------------------------------------------------------
 stack-000 - stack-100     | Elasticsearch Cluster  | Elasticsearch, Kibana
 stack-100 - stack-200     | Logstash               | Elasticsearch, Kibana, Logstash

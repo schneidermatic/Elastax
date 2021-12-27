@@ -1,9 +1,8 @@
 # CHANGES
 
-7.15.2 (2021-11-11)
+7.15.2 (2021-12-27)
 ---------------------
-- Recipes were updated for elastic release 'v7.15.2'
+* Updated - Recipes were updated for elastic release 'v7.15.2'
+* Updated - 'resources/scripts/event.sh' was modified.
+* Updated - 'event.pipeline' file was modified in various stacks.
 
-7.15.1 (2021-11-11)
----------------------
-- Recipes were updated for elastic release 'v7.15.1'

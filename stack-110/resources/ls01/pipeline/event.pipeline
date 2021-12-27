@@ -34,7 +34,7 @@ output {
   if [type] == 'event' {
     elasticsearch {
       hosts    => [ "http://es01:9200" ]
-      index    => "%{[elastic_index]}-%{+YYYY.MM.dd}"
+      index    => "%{[ecm][event][elastic_index]}%"
       user     => "${ELASTIC_USER}"
       password => "${ELASTIC_PASSWORD}"
     }

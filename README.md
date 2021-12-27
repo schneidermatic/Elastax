@@ -9,12 +9,12 @@ if you like the project. Thank you in advance!
 
 ###### ELASTIC STACK RELEASE NOTES
 ---
-Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-15-0](https://www.elastic.co/blog/whats-new-elastic-7-15-0) <br/>
+Elastic Blog Post: [https://www.elastic.co/blog/whats-new-elastic-7-16-0](https://www.elastic.co/blog/whats-new-elastic-7-16-0) <br/>
 
 Elastic Solutions <br/>
-Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-15-0) <br/>
-Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0](https://www.elastic.co/blog/whats-new-elastic-observability-7-15-0) <br/>
-Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-15-0](https://www.elastic.co/blog/whats-new-elastic-security-7-15-0) <br/>
+Elastic Search Enterprise: [https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-16-0](https://www.elastic.co/blog/whats-new-elastic-enterprise-search-7-16-0) <br/>
+Elastic Observability: [https://www.elastic.co/blog/whats-new-elastic-observability-7-16-0](https://www.elastic.co/blog/whats-new-elastic-observability-7-16-0) <br/>
+Elastic Security: [https://www.elastic.co/blog/whats-new-elastic-security-7-16-0](https://www.elastic.co/blog/whats-new-elastic-security-7-16-0) <br/>
 
 
 ###### PREREQUISITES

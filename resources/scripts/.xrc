@@ -24,7 +24,7 @@
 # PURPOSE:      Shell environment file
 #==============================================================================
 export PROJECT_NAME="elastic-stax"
-export NEW_RELEASE='ELASTIC_RELEASE=7.15.2'
+export NEW_RELEASE='ELASTIC_RELEASE=7.16.2'
 
 PATH=$PROJECT_HOME/resources:$PATH
 

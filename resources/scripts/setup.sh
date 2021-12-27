@@ -46,7 +46,7 @@ run_setup() {
 ## MAIN
 ##----------------------------------------
 run_main() {
-   #run_setup
+   run_setup
 }
 
 run_main "$@"

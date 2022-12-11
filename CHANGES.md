@@ -1,8 +1,10 @@
 # CHANGES
 
-8.5.3 (2021-12-11)
+8.5.3 (2022-12-11)
 ---------------------
-* Updated - 'stack-005' were updated for version '8.5.3'.
+* Updated - 'stack-005' were updated to version '8.5.3'.
+* Updated - Renaming of project from 'stack*' => 'elastax*'.
+* Updated - 'elastax-010' was updated to version '8.5.3'.
 
 7.15.2 (2021-12-27)
 ---------------------

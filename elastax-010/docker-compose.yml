@@ -62,6 +62,7 @@ services:
         condition: service_healthy
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
+      - ~/elastax/elastax-010/:/usr/share/elasticsearch/backup
       - certs:/usr/share/elasticsearch/config/certs
       - esdata01:/usr/share/elasticsearch/data
     ports:
@@ -108,7 +109,7 @@ services:
       image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
       volumes:
         - certs:/usr/share/kibana/config/certs
-        - kbdata:/usr/share/kibana/data
+        - kbdata01:/usr/share/kibana/data
       ports:
         - ${KIBANA_PORT}:5601
       environment:
@@ -133,5 +134,5 @@ services:
 volumes:
   certs:
   esdata01:
-  kbdata:
+  kbdata01:
 
